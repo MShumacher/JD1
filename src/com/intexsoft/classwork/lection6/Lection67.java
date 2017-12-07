@@ -1,4 +1,4 @@
-package classwork;
+package com.intexsoft.classwork.lection6;
 
 class Lection67 {
 	public static void main(String[] args) {

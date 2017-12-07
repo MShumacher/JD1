@@ -1,4 +1,4 @@
-package classwork;
+package com.intexsoft.classwork.lection6;
 
 public enum DayOfWeek {
 	monday("пн"), // name =monday ,index = 0

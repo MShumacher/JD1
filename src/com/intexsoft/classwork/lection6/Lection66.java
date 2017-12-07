@@ -1,4 +1,4 @@
-package classwork;
+package com.intexsoft.classwork.lection6;
 
 import java.util.Calendar;
 import java.util.Date;
