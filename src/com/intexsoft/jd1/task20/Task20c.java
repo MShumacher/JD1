@@ -8,7 +8,7 @@ public class Task20c {
 	public static void main(String[] args) {
 		String str = "  Te st?  s tri ng for spl,it  ";
 		Pattern pattern = Pattern.compile("\\W+");
-		Matcher matcher = pattern.matcher(str);
+		Matcher matcher = pattern.matcher(str + " ");
 		while (matcher.find()) {
 			if (matcher.start() != 0)
 				System.out.print(str.charAt(matcher.start() - 1));

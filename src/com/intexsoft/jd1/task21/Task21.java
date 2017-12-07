@@ -22,7 +22,6 @@ public class Task21 {
 		System.out
 				.println(String.format("Складываем строки с помощью StringBuilder. скорость выполнения: %S миллисекунд",
 						+dateStop2.getTime() - dateStart2.getTime()));
-
 	}
 
 }
