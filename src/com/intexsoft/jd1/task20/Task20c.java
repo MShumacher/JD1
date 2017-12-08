@@ -10,8 +10,9 @@ public class Task20c {
 		Pattern pattern = Pattern.compile("\\W+");
 		Matcher matcher = pattern.matcher(str + " ");
 		while (matcher.find()) {
-			if (matcher.start() != 0)
+			if (matcher.start() != 0) {
 				System.out.print(str.charAt(matcher.start() - 1));
+			}
 		}
 
 	}

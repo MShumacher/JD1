@@ -9,8 +9,9 @@ public class Task18a {
 		for (int i = 0; i < s.length(); i++) {
 			// if (!Character.isLetter(s.charAt(i))) Counter++;
 			for (int j = 0; j < punctuationMark.length; j++) {
-				if (s.charAt(i) == punctuationMark[j])
+				if (s.charAt(i) == punctuationMark[j]) {
 					counter++;
+				}
 			}
 		}
 		System.out.println(" оличество знаков препинани€ в строке: " + counter);

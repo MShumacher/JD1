@@ -10,8 +10,9 @@ public class Task18b {
 		int counter = 0;
 		Pattern pattern = Pattern.compile("\\p{Punct}");
 		Matcher matcher = pattern.matcher(s);
-		while (matcher.find())
+		while (matcher.find()) {
 			counter++;
+		}
 		System.out.println(" оличество знаков препинани€ в строке: " + counter);
 
 	}

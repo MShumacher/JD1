@@ -23,10 +23,11 @@ public class TimeInterval {
 	}
 
 	public int compareTime(TimeInterval t) {
-		if (this.getSecond() >= t.getSecond())
+		if (this.getSecond() >= t.getSecond()) {
 			System.out.println(String.format("%s >= %s", this.getSecond(), t.getSecond()));
-		else
+		} else {
 			System.out.println(String.format("%s < %s", this.getSecond(), t.getSecond()));
+		}
 		return this.getSecond() - t.getSecond();
 	}
 

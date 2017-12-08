@@ -9,11 +9,13 @@ public class Task19b {
 			if (s.charAt(0) != ' ') {
 				counter++;
 				s.delete(0, s.indexOf(" "));
-			} else
+			} else {
 				s.delete(0, 1);
+			}
 		}
-		if (s.length() != 0)
+		if (s.length() != 0) {
 			counter++;
+		}
 		System.out.println(String.format("В строке слов: %s", counter));
 
 	}

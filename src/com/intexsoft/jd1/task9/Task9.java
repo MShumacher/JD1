@@ -8,8 +8,9 @@ public class Task9 {
 		while (x != 0) {
 			x = (int) (Math.random() * 20);
 			System.out.print(x + " ");
-			if (max < x)
+			if (max < x) {
 				max = x;
+			}
 		}
 		System.out.println();
 		System.out.println("максимальное число: " + max);

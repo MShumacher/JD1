@@ -11,10 +11,11 @@ public class Task13 {
 				break;
 			}
 		}
-		if (attribute)
+		if (attribute) {
 			System.out.println(String.format("Число %s простое", x));
-		else
+		} else {
 			System.out.println(String.format("Число %s не является простым", x));
+		}
 	}
 
 }

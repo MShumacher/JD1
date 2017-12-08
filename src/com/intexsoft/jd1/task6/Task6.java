@@ -19,11 +19,13 @@ public class Task6 {
 				if (m == 12) {
 					y++;
 					m = 1;
-				} else
+				} else {
 					m++;
+				}
 
-			} else
+			} else {
 				d++;
+			}
 			break;
 		case 4:
 		case 6:
@@ -32,20 +34,23 @@ public class Task6 {
 			if (d == 30) {
 				d = 1;
 				m++;
-			} else
+			} else {
 				d++;
+			}
 			break;
 		default:
 			if ((y % 4 == 0) && (d == 28)) {
 				d = 1;
 				m++;
-			} else
+			} else {
 				d++;
+			}
 			if ((y % 4 != 0) && (d == 29)) {
 				d = 1;
 				m++;
-			} else
+			} else {
 				d++;
+			}
 		}
 		System.out.println(String.format("Следующий день: %s.%s.%s", d, m, y));
 	}
