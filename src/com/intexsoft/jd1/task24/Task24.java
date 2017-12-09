@@ -8,7 +8,7 @@ public class Task24 {
 	public static void main(String[] args) {
 		Iron iron = new Iron("Samsung");
 		Mixer mixer = new Mixer("Vitek");
-		Microwave microwave = new Microwave("LG");
+		Microwave microwave = new Microwave("LG Витек");
 		iron.on();
 		iron.printState();
 		mixer.on();
