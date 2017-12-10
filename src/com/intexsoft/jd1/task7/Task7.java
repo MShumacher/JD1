@@ -1,44 +1,29 @@
 package com.intexsoft.jd1.task7;
 
 public class Task7 {
+	
+	private static boolean isHomesInArea(int a, int b, int e, int c, int d, int f) {
+		if ((a + d <= e) && (b <= f) && (c <= f)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public static void main(String[] args) {
 		int a = 4;
 		int b = 2;
 		int c = 3;
 		int d = 6;
-		int e = 6;
+		int e = 5;
 		int f = 7;
-		boolean attribute = false;
-		if ((a + d <= e) && (b <= f) && (c <= f)) {
-			attribute = true;
-		}
-		if ((b + c <= e) && (a <= f) && (d <= f)) {
-			attribute = true;
-		}
-		if ((a + c <= e) && (b <= f) && (d <= f)) {
-			attribute = true;
-		}
-		if ((b + d <= e) && (a <= f) && (c <= f)) {
-			attribute = true;
-		}
-		if ((a + d <= f) && (b <= e) && (c <= e)) {
-			attribute = true;
-		}
-		if ((b + c <= f) && (a <= e) && (d <= e)) {
-			attribute = true;
-		}
-		if ((a + c <= f) && (b <= e) && (d <= e)) {
-			attribute = true;
-		}
-		if ((b + d <= f) && (a <= e) && (c <= e)) {
-			attribute = true;
-		}
-		if (attribute) {
-			System.out.println(String.format("Äîìà ðàçìåðîì %s*%s è %s*%s ìîæíî ðàçìåñòèòü íà ó÷àñòêå ðàçìåðîì %s*%s",
+		if (isHomesInArea(a, d, e, b, c, f) || isHomesInArea(a, d, f, b, c, e) || isHomesInArea(b, c, e, a, d, f)
+				|| isHomesInArea(b, c, f, a, d, e) || isHomesInArea(a, c, e, b, d, f) || isHomesInArea(a, c, f, b, d, e)
+				|| isHomesInArea(b, d, e, a, c, f) || isHomesInArea(b, d, f, a, c, e)) {
+			System.out.println(String.format("Ð´Ð¾Ð¼Ð° Ñ€Ð°Ð·Ð¼ÐµÑ€Ð°Ð¼Ð¸ %s*%s Ð¸ %s*%s Ð¼Ð¾Ð¶Ð½Ð¾ Ñ€Ð°Ð·Ð¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ð½Ð° ÑƒÑ‡Ð°ÑÑ‚ÐºÐµ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð¾Ð¼ %s*%s",
 					a, b, c, d, e, f));
 		} else {
-			System.out.println(String.format("Äîìà ðàçìåðîì %s*%s è %s*%s íåëüçÿ ðàçìåñòèòü íà ó÷àñòêå ðàçìåðîì %s*%s",
+			System.out.println(String.format("Ð”Ð¾Ð¼Ð° Ñ€Ð°Ð·Ð¼ÐµÑ€Ð°Ð¼Ð¸ %s*%s Ð¸ %s*%s Ð½ÐµÐ»ÑŒÐ·Ñ Ñ€Ð°Ð·Ð¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ð½Ð° ÑƒÑ‡Ð°ÑÑ‚ÐºÐµ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð¾Ð¼ %s*%s",
 					a, b, c, d, e, f));
 		}
 	}
