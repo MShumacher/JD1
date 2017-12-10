@@ -52,7 +52,6 @@ public class Task6 {
 	}
 
 	public static void main(String[] args) {
-
 		switch (m) {
 		case 1:
 		case 3:
