@@ -21,39 +21,39 @@ public class Bankomat {
 	}
 
 	public void getStatus() {
-		System.out.println("Банкомат загружен так:");
+		System.out.println("ATM loaded:");
 		for (int i = 0; i < countOfNominals; i++) {
-			System.out.println(String.format("%s купюр номиналом %s ", count[i], nominals[i]));
+			System.out.println(String.format("%s PCs bill %s ", count[i], nominals[i]));
 		}
 	}
 
 	public boolean getMoney(int sum) {
 		balance(sum, 0);
 		if (validSum) {
-			System.out.println(String.format("Выдаем сумму %s купюрами:", sum));
+			System.out.println(String.format("Take your Money %s of:", sum));
 			for (int j = 0; j < countOfNominals; j++) {
-				System.out.println(String.format("%s шт номиналом %s ", lastOperation[j], nominals[j]));
+				System.out.println(String.format("%s PCs bill %s ", lastOperation[j], nominals[j]));
 				count[j] -= lastOperation[j];
 			}
 			return true;
 		} else {
-			System.out.println("Указанную сумму выдать невозможно.");
+			System.out.println("ATM can not issue a specified amount.");
 			return false;
 		}
 	}
 
 	private void balance(int s, int i) {
-		// s - сумма, которую осталось добрать
-		// i - номер номинала, купюры которого добираем
-		// номиналы должны быть отсортированы по убыванию
-		int k = 0;// k - количество купюр, которые "выкидывам" на предыдущем номинале, если не
-					// удалось набрать нужную сумму
+		// s - РѕСЃС‚Р°С‚РѕРє РґРµРЅРµРі, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РґРѕР±СЂР°С‚СЊ РєСѓРїСЋСЂР°РјРё
+		// i - РЅРѕРјРµСЂ РЅРѕРјРёРЅР°Р»Р°, РєСѓРїСЋСЂС‹ РєРѕС‚РѕСЂРѕРіРѕ РґРѕР±РёСЂР°РµРј
+		// РЅРѕРјРёРЅР°Р»С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅС‹ РїРѕ СѓР±С‹РІР°РЅРёСЋ
+		int k = 0;// k - РѕР»РёС‡РµСЃС‚РІРѕ РєСѓРїСЋСЂ, РєРѕС‚РѕСЂС‹Рµ "РІС‹РєРёРґС‹РІР°Рј" РЅР° РїСЂРµРґС‹РґСѓС‰РµРј РЅРѕРјРёРЅР°Р»Рµ, РµСЃР»Рё РЅРµ
+					// СѓРґР°Р»РѕСЃСЊ РЅР°Р±СЂР°С‚СЊ РЅСѓР¶РЅСѓСЋ СЃСѓРјРјСѓ
 		while ((validSum == false) && (s != 0) && (i < countOfNominals) && (k <= Math.min(count[i], s / nominals[i]))) {
 			lastOperation[i] = Math.min(count[i], s / nominals[i]) - k;
 			balance(s - lastOperation[i] * nominals[i], i + 1);
 			k++;
 		}
-		if (s == 0) { // удалось набрать нужную сумму денег
+		if (s == 0) { // СѓРґР°Р»РѕСЃСЊ РЅР°Р±СЂР°С‚СЊ РЅСѓР¶РЅСѓСЋ СЃСѓРјРјСѓ РґРµРЅРµРі
 			validSum = true;
 		}
 
