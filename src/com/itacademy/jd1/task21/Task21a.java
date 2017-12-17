@@ -11,7 +11,7 @@ public class Task21a {
 			s += " ";
 		}
 		Date dateStop1 = new Date();
-		System.out.println(String.format("Складываем строки с помощью +. Cкорость выполнения: %S миллисекунд",
+		System.out.println(String.format("РЎР»РѕР¶РµРЅРёРµ СЃС‚СЂРѕРє СЃ РїРѕРјРѕС‰СЊСЋ РѕРїРµСЂР°С‚РѕСЂР° +. Р’СЂРµРјСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ: %s РјРёР»Р»РёСЃРµРєСѓРЅРґ.",
 				+dateStop1.getTime() - dateStart1.getTime()));
 		Date dateStart2 = new Date();
 		StringBuilder strB = new StringBuilder(s);
@@ -19,9 +19,8 @@ public class Task21a {
 			strB.append(" wewerrtr");
 		}
 		Date dateStop2 = new Date();
-		System.out
-				.println(String.format("Складываем строки с помощью StringBuilder. Cкорость выполнения: %S миллисекунд",
-						+dateStop2.getTime() - dateStart2.getTime()));
+		System.out.println(String.format("РЎР»РѕР¶РµРЅРёРµ СЃС‚СЂРѕРє СЃ РїРѕРјРѕС‰СЊСЋ StringBuilder. Р’СЂРµРјСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ: %s РјРёР»Р»РёСЃРµРєСѓРЅРґ.",
+				+dateStop2.getTime() - dateStart2.getTime()));
 	}
 
 }

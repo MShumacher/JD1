@@ -1,27 +1,24 @@
 package com.itacademy.jd1.task21;
 
-import java.util.Date;
-
 public class Task21b {
 
 	public static void main(String[] args) {
 		String s = "wewerrtr";
-		long dateStart1 = System.currentTimeMillis();
+		long dateStart = System.currentTimeMillis();
 		for (int i = 0; i < 50000; i++) {
 			s += " ";
 		}
-		long dateStop1 = System.currentTimeMillis();
-		System.out.println(String.format("Ñêëàäûâàåì ñòðîêè ñ ïîìîùüþ +. Cêîðîñòü âûïîëíåíèÿ: %S ìèëëèñåêóíä",
-				+dateStop1 - dateStart1));
-		long dateStart2 = System.currentTimeMillis();
+		long dateStop = System.currentTimeMillis();
+		System.out.println(String.format("Ð¡Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÑÑ‚Ñ€Ð¾Ðº Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ð° +. Ð’Ñ€ÐµÐ¼Ñ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ: %s Ð¼Ð¸Ð»Ð»Ð¸ÑÐµÐºÑƒÐ½Ð´.",
+				+dateStop - dateStart));
+		dateStart = System.currentTimeMillis();
 		StringBuilder strB = new StringBuilder(s);
 		for (int i = 0; i < 50000; i++) {
 			strB.append(" wewerrtr");
 		}
-		long dateStop2 = System.currentTimeMillis();
-		System.out
-				.println(String.format("Ñêëàäûâàåì ñòðîêè ñ ïîìîùüþ StringBuilder. Cêîðîñòü âûïîëíåíèÿ: %S ìèëëèñåêóíä",
-						+dateStop2 - dateStart2));
+		dateStop = System.currentTimeMillis();
+		System.out.println(String.format("Ð¡Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÑÑ‚Ñ€Ð¾Ðº Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ StringBuilder. Ð’Ñ€ÐµÐ¼Ñ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ: %s Ð¼Ð¸Ð»Ð»Ð¸ÑÐµÐºÑƒÐ½Ð´.",
+				+dateStop - dateStart));
 	}
 
 }

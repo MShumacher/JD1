@@ -23,20 +23,21 @@ public class TimeInterval {
 	}
 
 	public int compareTime(TimeInterval t) {
-		if (this.getSecond() >= t.getSecond()) {
-			System.out.println(String.format("%s >= %s", this.getSecond(), t.getSecond()));
-		} else {
-			System.out.println(String.format("%s < %s", this.getSecond(), t.getSecond()));
-		}
+		/*
+		 * if (this.getSecond() >= t.getSecond()) {
+		 * System.out.println(String.format("%s >= %s", this.getSecond(),
+		 * t.getSecond())); } else { System.out.println(String.format("%s < %s",
+		 * this.getSecond(), t.getSecond())); }
+		 */
 		return this.getSecond() - t.getSecond();
 	}
 
 	public void printTimeInSecond() {
-		System.out.println("Ïðîìåæóòîê â ñåêóíäàõ: " + this.getSecond());
+		System.out.println("ÐŸÑ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚Ð¾Ðº Ð² ÑÐµÐºÑƒÐ½Ð´Ð°Ñ…: " + this.getSecond());
 	};
 
 	public void printTime() {
-		System.out.println(String.format("Ïðîìåæóòîê: ÷àñû %s, ìèíóòû %s, ñåêóíäû %s ", this.hour, this.min, this.sec));
+		System.out.println(String.format("ÐŸÑ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚Ð¾Ðº: %s Ñ‡Ð°ÑÐ¾Ð², %s Ð¼Ð¸Ð½ÑƒÑ‚, %s ÑÐµÐºÑƒÐ½Ð´", this.hour, this.min, this.sec));
 	};
 
 }

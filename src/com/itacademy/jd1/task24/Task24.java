@@ -6,13 +6,14 @@ import com.itacademy.jd1.task24.forKitchen.*;
 public class Task24 {
 
 	public static void main(String[] args) {
-		Iron iron = new Iron("Samsung");
-		Mixer mixer = new Mixer("Vitek");
-		Microwave microwave = new Microwave("LG");
+		Appliances iron = new Iron("Samsung");
+		Appliances mixer = new Mixer("Vitek");
+		Appliances microwave = new Microwave("LG");
 		iron.on();
 		iron.printState();
 		mixer.on();
 		mixer.printState();
+		microwave.printState();
 	}
 
 }

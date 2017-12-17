@@ -31,24 +31,24 @@ abstract class Appliances {
 		this.brand = brand;
 	}
 
-	public String getModel() {
+	protected String getModel() {
 		return model;
 	}
 
-	public void setModel(String model) {
+	protected void setModel(String model) {
 		this.model = model;
 	}
 
-	public Appliances(String brand) {
+	protected Appliances(String brand) {
 		this.brand = brand;
 		isOn = false;
 	}
 
 	protected void printState() {
 		if (isOn) {
-			System.out.println(String.format("%s %s включен.", this.type, this.brand));
+			System.out.println(String.format("%s %s is ON.", this.type, this.brand));
 		} else {
-			System.out.println(String.format("%s %s вsключен.", this.type, this.brand));
+			System.out.println(String.format("%s %s is OFF.", this.type, this.brand));
 		}
 	}
 
