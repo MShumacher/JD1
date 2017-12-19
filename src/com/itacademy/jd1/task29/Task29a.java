@@ -1,14 +1,13 @@
 package com.itacademy.jd1.task29;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Task29 {
+public class Task29a {
 
 	public static void main(String[] args) {
 		String str = "Hello!\r\n" + "\r\n"
-				+ "My name is Kate. My surname is Pavlova. I’m seven. I live in Minsk, in Pushkin street. I go to school number 214 . I’m in the first form.\r\n"
+				+ "224 My name is Kate. My surname is Pavlova. I’m seven. I live in Minsk, in Pushkin street. I go to school number 214 . I’m in the first form.\r\n"
 				+ "\r\n"
 				+ "I’ve got a family. It is small. We are a family of four. I’ve got a father, a mother and a brother. I haven’t got a sister. My father is.an engineer. He works in a plant. My mother is a teacher. She works at school. My brother is little. He doesn’t go to school. He goes to a kindergarten. He is four.\r\n"
 				+ "\r\n"
@@ -20,8 +19,7 @@ public class Task29 {
 				+ "\r\n"
 				+ "I like to read. I can read well. I like fairytales. They are very interesting. I like «Cinderella» and «Pinocchio» best.\r\n"
 				+ "\r\n" + "Bye! ";
-		str = str.trim();
-		String[] words = str.toLowerCase().split("(\\W|\\d)+");
+		String[] words = str.trim().toLowerCase().split("(\\W|\\d)+");
 		List<String> dictionary = new LinkedList<String>();
 		for (String string : words) {
 			dictionary.add(string);
