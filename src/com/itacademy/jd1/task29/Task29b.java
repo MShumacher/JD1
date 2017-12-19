@@ -22,9 +22,9 @@ public class Task29b {
 		String[] words = str.trim().toLowerCase().split("(\\W|\\d)+");
 		Map<String, Integer> dictionary = new HashMap<String, Integer>();
 		for (String string : words) {
-			if (dictionary.containsKey(string))
+			if (dictionary.containsKey(string)) {
 				dictionary.replace(string, dictionary.get(string) + 1);
-			else {
+			} else {
 				dictionary.put(string, 1);
 			}
 		}
