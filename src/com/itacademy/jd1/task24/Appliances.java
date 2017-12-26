@@ -1,50 +1,50 @@
 package com.itacademy.jd1.task24;
 
-abstract class Appliances {
+public abstract class Appliances {
 	private boolean isOn;
 	private String model;
 	private String type;
 	private String subType;
 	private String brand;
 
-	protected String getType() {
+	public String getType() {
 		return type;
 	}
 
-	protected void setType(String type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
-	protected String getSubType() {
+	public String getSubType() {
 		return subType;
 	}
 
-	protected void setSubType(String subType) {
+	public void setSubType(String subType) {
 		this.subType = subType;
 	}
 
-	protected String getBrand() {
+	public String getBrand() {
 		return brand;
 	}
 
-	protected void setBrand(String brand) {
+	public void setBrand(String brand) {
 		this.brand = brand;
 	}
 
-	protected String getModel() {
+	public String getModel() {
 		return model;
 	}
 
-	protected void setModel(String model) {
+	public void setModel(String model) {
 		this.model = model;
 	}
 
-	protected Appliances(String brand) {
+	public Appliances(String brand) {
 		this.brand = brand;
 		isOn = false;
 	}
 
-	protected void printState() {
+	public void printState() {
 		if (isOn) {
 			System.out.println(String.format("%s %s is ON.", this.type, this.brand));
 		} else {
@@ -52,15 +52,15 @@ abstract class Appliances {
 		}
 	}
 
-	protected boolean getState() {
+	public boolean getState() {
 		return isOn;
 	}
 
-	protected void on() {
+	public void on() {
 		isOn = true;
 	}
 
-	protected void off() {
+	public void off() {
 		isOn = false;
 	}
 }
