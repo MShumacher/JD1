@@ -21,7 +21,7 @@ public class Task30 {
 			String[] split = string.split(" ");
 			wordsCount += split.length;
 		}
-		System.out.println(String.format("Text in file has %s words.", wordsCount));
+				System.out.println(String.format("Text in file has %s words.", wordsCount));
 	}
 
 }
