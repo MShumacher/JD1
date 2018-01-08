@@ -11,12 +11,12 @@ public class Main {
 		cells.add(new Cell(50, 0));
 		cells.add(new Cell(100, 0));
 		ATM atm = new ATM(cells);
-		atm.printState();
+		System.out.println(atm);
 		atm.addMoney(100, 12);
 		atm.addMoney(50, 1);
 		atm.addMoney(20, 12);
-		atm.printState();
-		System.out.println(atm.giveMoney(810,0));
+		System.out.println(atm);
+		System.out.println(atm.giveMoney(810));
 	}
 
 }

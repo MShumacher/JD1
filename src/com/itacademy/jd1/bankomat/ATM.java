@@ -23,14 +23,6 @@ public class ATM {
 		this.currentOperation = cells;
 	}
 
-	public void printState() {
-		System.out.println("ATM loaded of:");
-		for (Cell cell : cells) {
-			System.out.println(String.format("[%s] - %s ", cell.getNominal(), cell.getQuantity()));
-		}
-
-	}
-
 	public void addMoney(int nominal, int quantity) {
 		for (Cell cell : cells) {
 			if (cell.available(nominal)) {
@@ -41,41 +33,36 @@ public class ATM {
 		System.out.println("Not supported nominal");
 	}
 
-	public boolean giveMoney(int totalSum, int k) {
-		int currentSum = totalSum;
-
-		/*
-		 * Iterator iterator=cells.iterator(); while(iterator.hasNext()) {
-		 * iterator.next() }
-		 */
-		int minQuantity = Math.min(currentSum / cells.get(k).getNominal(), cells.get(k).getQuantity());
-		// for (int j = 0; j <= minQuantity; j++) {
-		currentSum -= cells.get(k).getNominal() * minQuantity;
-		if (currentSum == 0) {
-			currentOperation.set(k, new Cell(cells.get(k).getNominal(), minQuantity));
-			return true;
-		} else {
-			if (k != cells.size()-1) {
-
-				currentOperation.set(k, new Cell(cells.get(k).getNominal(), minQuantity));
-				giveMoney(currentSum, ++k);
-			} else {
-				currentOperation.set(k, new Cell(cells.get(k).getNominal(), minQuantity));
+	public boolean giveMoney(int totalSum) {
+		for (int i = 0; i < cells.size(); i++) {
+			Cell cell = cells.get(i);
+			int minQuantity = Math.min(totalSum / cell.getNominal(), cell.getQuantity());
+			int currentSum = 0;
+			for (int j = 0; j <= minQuantity; j++) {
+				currentSum = cell.getNominal() * j;
+				Cell cellJ = new Cell(cell.getNominal(), j);
+				currentOperation.add(i, cellJ);
+				if (totalSum - currentSum == 0) {
+					break;
+				}
 			}
-			giveMoney(totalSum, --k);
+			totalSum -= currentSum;
+			if (totalSum == 0) {
+				return true;
+			} else {
+				totalSum += currentOperation.get(i).getQuantity() * currentOperation.get(i).getNominal();
+			}
 		}
-
-		/*
-		 * for (Cell cell : cells) { int minQuantity = Math.min(currentSum /
-		 * cell.getNominal(), cell.getQuantity()); currentSum -= cell.getNominal() *
-		 * minQuantity; currentOperation.add(new Cell(cell.getNominal(), minQuantity));
-		 * if (currentSum == 0) { return true; } else if (currentSum > 0) {
-		 * giveMoney(currentSum); } else { currentOperation.clear();
-		 * giveMoney(totalSum+); } } currentOperation.clear(); giveMoney(totalSum -
-		 * minQuantity - 1);
-		 */
 		return false;
+	}
 
+	@Override
+	public String toString() {
+		String str = "ATM loaded of:\r\n";
+		for (Cell cell : cells) {
+			str += String.format("[%s] - %s pc's\r\n", cell.getNominal(), cell.getQuantity());
+		}
+		return str;
 	}
 
 }

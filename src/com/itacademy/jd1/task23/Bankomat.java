@@ -54,8 +54,8 @@ public class Bankomat {
 		int minimum50 = Math.min(count50, sum / 50);
 		int minimum20 = Math.min(count20, sum / 20);
 		for (i = 0; i <= minimum20; i++) {
-			for (j = 1; j <= minimum50; j++) {
-				for (k = 1; k <= minimum100; k++) {
+			for (j = 0; j <= minimum50; j++) {
+				for (k = 0; k <= minimum100; k++) {
 					if (sum == 20 * i + 50 * j + 100 * k) {
 						System.out.println(String.format("Take your Money %s of:", sum));
 						System.out.println(k + " PCs bill 100");
