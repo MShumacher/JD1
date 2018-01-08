@@ -1,4 +1,4 @@
-package com.itacademy.classwork.lection10Exceptions;
+package com.itacademy.classwork.lection10exceptions;
 
 public class MyException2 extends Exception {
 

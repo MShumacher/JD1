@@ -1,4 +1,4 @@
-package com.itacademy.classwork.lection10Exceptions;
+package com.itacademy.classwork.lection10exceptions;
 
 public class Task1 {
 	public static void main(String[] args) {
