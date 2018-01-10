@@ -1,7 +1,7 @@
 package com.itacademy.jd1.task24;
 
 public abstract class Appliances {
-	private boolean isOn;
+	private boolean On;
 	private String model;
 	private String type;
 	private String subType;
@@ -41,11 +41,11 @@ public abstract class Appliances {
 
 	public Appliances(String brand) {
 		this.brand = brand;
-		isOn = false;
+		On = false;
 	}
 
 	public void printState() {
-		if (isOn) {
+		if (On) {
 			System.out.println(String.format("%s %s is ON.", this.type, this.brand));
 		} else {
 			System.out.println(String.format("%s %s is OFF.", this.type, this.brand));
@@ -53,14 +53,14 @@ public abstract class Appliances {
 	}
 
 	public boolean getState() {
-		return isOn;
+		return On;
 	}
 
 	public void on() {
-		isOn = true;
+		On = true;
 	}
 
 	public void off() {
-		isOn = false;
+		On = false;
 	}
 }

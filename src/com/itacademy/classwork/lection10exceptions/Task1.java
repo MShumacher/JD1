@@ -40,6 +40,6 @@ public class Task1 {
 		}
 		// MyException1 myException = new MyException1();
 		// throw myException;
-		// пишется обычно throw new MyException();
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ throw new MyException();
 	}
 }

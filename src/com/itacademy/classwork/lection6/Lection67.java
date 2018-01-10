@@ -10,5 +10,7 @@ class Lection67 {
 
 		DayOfWeek wednesdayFromString = DayOfWeek.valueOf("wednesday");
 		DayOfWeek dayOfWeek = DayOfWeek.values()[2];
+		System.out.println(wednesdayFromString);
+		System.out.println(dayOfWeek);
 	}
 }

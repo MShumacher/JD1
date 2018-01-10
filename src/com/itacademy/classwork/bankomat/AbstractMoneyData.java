@@ -24,6 +24,6 @@ public abstract class AbstractMoneyData {
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+"[ nominal:"+nominal+" ,quantity: "+quantity+" ]"));
+		return getClass().getSimpleName() + "[ nominal:" + nominal + " ,quantity: " + quantity + " ]";
 	}
 }
