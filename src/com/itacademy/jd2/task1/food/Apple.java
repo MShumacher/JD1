@@ -8,4 +8,8 @@ public class Apple extends Food {
 		super(name, price, id);
 	}
 
+	public Apple(AppleBase apple) {
+		super(apple.name(), apple.getPrice(), apple.getId());
+	}
+
 }

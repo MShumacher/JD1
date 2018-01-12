@@ -1,5 +1,4 @@
 package com.itacademy.jd2.task1;
-
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -9,7 +8,6 @@ public class ShopCounter {
 	public Map<Article, Integer> getDesk() {
 		return desk;
 	}
-
 	public Article getRandomItem() {
 		int rand = (int) (Math.random() * desk.size());
 		int i = 0;
@@ -24,7 +22,6 @@ public class ShopCounter {
 		}
 		return null;
 	}
-
 	public void setDesk(Map<Article, Integer> desk) {
 		this.desk = desk;
 	}

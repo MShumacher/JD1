@@ -6,7 +6,9 @@ public class Packet extends Household {
 
 	public Packet(String name, int price, int id  ) {
 		super(name, price, id);
-		// TODO Auto-generated constructor stub
 	}
+
+	public Packet(PacketBase packet) {
+		super(packet.name(), packet.getPrice(), packet.getId());	}
 
 }

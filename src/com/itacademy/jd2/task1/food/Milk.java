@@ -6,7 +6,10 @@ public class Milk extends Food {
 
 	public Milk(String name, int price, int id) {
 		super(name, price, id);
-		// TODO Auto-generated constructor stub
+	}
+
+	public Milk(MilkBase milk) {
+		super(milk.name(), milk.getPrice(), milk.getId());
 	}
 
 }

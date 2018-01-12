@@ -1,11 +1,11 @@
-package com.itacademy.jd2.task1.food;
+package com.itacademy.jd2.task1.household;
 
-public enum GrapeEnum {
-	RedGlobe(10001, 2), Sultana(10002, 3), Azalia(10003, 4), Izabella(10004, 2);
+public enum PanBase {
+	Big(70001, 50), Medium(70002, 30), Small(70003, 25);
 	private int id;
 	private int price;
 
-	private GrapeEnum(int id, int price) {
+	private PanBase(int id, int price) {
 		this.id = id;
 		this.price = price;
 	}
@@ -25,5 +25,4 @@ public enum GrapeEnum {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
 }

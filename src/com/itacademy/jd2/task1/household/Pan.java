@@ -6,7 +6,10 @@ public class Pan extends Household {
 
 	public Pan(String name, int price, int id) {
 		super(name, price, id);
-		// TODO Auto-generated constructor stub
+	}
+
+	public Pan(PanBase pan) {
+		super(pan.name(), pan.getPrice(), pan.getId());
 	}
 
 }
