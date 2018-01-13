@@ -15,7 +15,7 @@ public class PLEmployee extends Employee {
 		try {
 			while (true) {
 				deleteCar(name);
-				Thread.sleep(15000);
+				Thread.sleep(1500);
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -23,11 +23,11 @@ public class PLEmployee extends Employee {
 	}
 
 	public synchronized void deleteCar(String name) {
-		if (carqueue.isEmpty()) {
+		if (getCarqueue().isEmpty()) {
 			System.out.println("No cars in buffer.");
 		} else {
-			carqueue.remove(0);
-			System.out.println(String.format("PL %s delete car. [%s]", name, carqueue.size()));
+			getCarqueue().remove(0);
+			System.out.println(String.format("PL %s delete car. [%s]", name, getCarqueue().size()));
 		}
 	}
 }
