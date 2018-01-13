@@ -4,8 +4,8 @@ import java.util.List;
 
 public class PLEmployee extends Employee {
 
-	public PLEmployee(List<Car> carqueue) {
-		super(carqueue);
+	public PLEmployee(List<Car> carQueue) {
+		super(carQueue);
 	}
 
 	@Override
@@ -23,11 +23,11 @@ public class PLEmployee extends Employee {
 	}
 
 	public synchronized void deleteCar(String name) {
-		if (getCarqueue().isEmpty()) {
+		if (getCarQueue().isEmpty()) {
 			System.out.println("No cars in buffer.");
 		} else {
-			getCarqueue().remove(0);
-			System.out.println(String.format("PL %s delete car. [%s]", name, getCarqueue().size()));
+			getCarQueue().remove(0);
+			System.out.println(String.format("PL %s delete car. [%s]", name, getCarQueue().size()));
 		}
 	}
 }

@@ -4,8 +4,8 @@ import java.util.List;
 
 public class BYEmployee extends Employee {
 
-	public BYEmployee(List<Car> carqueue) {
-		super(carqueue);
+	public BYEmployee(List<Car> carQueue) {
+		super(carQueue);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class BYEmployee extends Employee {
 	}
 
 	public synchronized void addCar(String name) {
-		getCarqueue().add(new Car());
-		System.out.println(String.format("BY %s add car. [%s]", name, getCarqueue().size()));
+		getCarQueue().add(new Car());
+		System.out.println(String.format("BY %s add car. [%s]", name, getCarQueue().size()));
 	}
 }
