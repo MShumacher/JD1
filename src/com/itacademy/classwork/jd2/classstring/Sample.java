@@ -14,7 +14,7 @@ public class Sample {
 
 	@Override
 	protected void finalize() throws Throwable {
-		System.out.println("i'm going to recyclebin " + hashCode());
+		System.out.println("i'm going to recycle bin " + hashCode());
 	}
 
 }
