@@ -1,4 +1,4 @@
-package com.itacademy.jd2.task1;
+package com.itacademy.jd2.task1v2;
 
 import java.util.LinkedList;
 import java.util.List;

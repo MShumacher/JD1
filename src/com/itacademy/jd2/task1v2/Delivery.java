@@ -1,4 +1,4 @@
-package com.itacademy.jd2.task1;
+package com.itacademy.jd2.task1v2;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,7 +30,7 @@ public class Delivery extends Basket {
 	}
 
 	private void newDelivery(int item) {
-		System.out.println(String.format("New delivery: %s items. [%s]", item, this.getSizeShop() + item));
+		System.out.println(String.format("New delivery: %s items. [%s]", item, getSizeShop() + item));
 		for (int i = 0; i < item; i++) {
 			Article randomArticle = new Article().getRandomArticle();
 			if (getShop().containsKey(randomArticle)) {
@@ -44,13 +44,4 @@ public class Delivery extends Basket {
 		// }
 	}
 
-	public int getSizeShop() {
-		synchronized (getShop()) {
-			int count = 0;
-			for (Map.Entry<Article, Integer> entry : getShop().entrySet()) {
-				count += entry.getValue();
-			}
-			return count;
-		}
-	}
 }
