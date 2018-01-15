@@ -1,26 +1,61 @@
 package com.itacademy.jd2.task1;
 
-public abstract class Article implements Comparable<Article> {
+import com.itacademy.jd2.task1.food.Apple;
+import com.itacademy.jd2.task1.food.Bread;
+import com.itacademy.jd2.task1.food.ChewingGum;
+import com.itacademy.jd2.task1.food.Grape;
+import com.itacademy.jd2.task1.food.Milk;
+import com.itacademy.jd2.task1.household.Packet;
+import com.itacademy.jd2.task1.household.Pan;
+
+public class Article implements Comparable<Article> {
+	private String name;
+	private Integer id;
+	private int price;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this.hashCode() == obj.hashCode()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		return this.id;
+	}
 
 	@Override
 	public int compareTo(Article article) {
-		return this.name.compareTo(article.name);
+		return this.id.compareTo(article.id);
 	}
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [ " + name + " , " + price + " , " + id + " ]";
+		return this.getClass().getSimpleName() + " [ " + name + " , " + id + " , " + price + " ]";
 	}
 
-	private String name;
-	private int price;
-	private int id;
-	// private Date production;
-
-	public Article(String name, int price, int id) {
-		this.name = name;
-		this.price = price;
-		this.id = id;
+	public Article getRandomArticle() {
+		int rand = 1 + (int) (Math.random() * 7);
+		switch (rand) {
+		case 1:
+			return new Apple();
+		case 2:
+			return new Bread();
+		case 3:
+			return new ChewingGum();
+		case 4:
+			return new Grape();
+		case 5:
+			return new Milk();
+		case 6:
+			return new Packet();
+		case 7:
+			return new Pan();
+		}
+		return null;
 	}
 
 	public String getName() {

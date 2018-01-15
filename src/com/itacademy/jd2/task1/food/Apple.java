@@ -1,15 +1,14 @@
 package com.itacademy.jd2.task1.food;
 
-import com.itacademy.jd2.task1.Food;
+import com.itacademy.jd2.task1.Article;
 
-public class Apple extends Food {
+public class Apple extends Article {
 
-	public Apple(String name, int price, int id) {
-		super(name, price, id);
-	}
-
-	public Apple(AppleBase apple) {
-		super(apple.name(), apple.getPrice(), apple.getId());
+	public Apple() {
+		AppleBase apple = AppleBase.getRandomApple();
+		this.setName(apple.name());
+		this.setPrice(apple.getPrice());
+		this.setId(apple.getId());
 	}
 
 }

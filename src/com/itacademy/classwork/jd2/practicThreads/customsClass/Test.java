@@ -20,9 +20,9 @@ public class Test {
 		startWork(plEmployees);
 		startWork(byEmployees);
 
-//		new BYBoss(queue, byEmployees).start();
+		new BYBoss(queue, byEmployees).start();
 		Thread.sleep(200);
-//		new PLBoss(queue, plEmployees).start();
+		new PLBoss(queue, plEmployees).start();
 	}
 
 	private static void startWork(List<? extends Thread> workers) throws InterruptedException {

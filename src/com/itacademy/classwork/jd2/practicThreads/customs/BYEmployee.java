@@ -1,29 +1,32 @@
 package com.itacademy.classwork.jd2.practicThreads.customs;
 
-import java.util.List;
+import java.util.LinkedList;
 
 public class BYEmployee extends Employee {
 
-	public BYEmployee(List<Car> carQueue) {
+	public BYEmployee(LinkedList<Car> carQueue) {
 		super(carQueue);
 	}
 
 	@Override
 	public void run() {
 		String name = Thread.currentThread().getName();
-		System.out.println(String.format("Start BYEmployee %s ", name));
-		try {
-			while (true) {
-				addCar(name);
-				Thread.sleep(1000 + (int) (Math.random() * 1000));
+		while (true) {
+			try {
+				Thread.sleep(10 * 1000 + (int) (Math.random() * 10 * 1000));
+			} catch (InterruptedException e) {
+				goHome(name);
+				return;
 			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+
+			addCar(name);
 		}
 	}
 
-	public synchronized void addCar(String name) {
-		getCarQueue().add(new Car());
-		System.out.println(String.format("BY %s add car. [%s]", name, getCarQueue().size()));
+	public void addCar(String name) {
+		synchronized (getCarQueue()) {
+			getCarQueue().add(new Car());
+			System.out.println(String.format("BY %s: add car. [%s]", name, getCarQueue().size()));
+		}
 	}
 }

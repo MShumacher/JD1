@@ -14,15 +14,12 @@ public enum PacketBase {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public static PacketBase getRandomPacket() {
+		int rand = (int) (Math.random() * (PacketBase.values().length - 1));
+		return PacketBase.values()[rand];
 	}
 }

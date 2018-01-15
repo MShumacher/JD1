@@ -14,15 +14,11 @@ public enum MilkBase {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public int getPrice() {
 		return price;
 	}
-
-	public void setPrice(int price) {
-		this.price = price;
+	public static MilkBase getRandomMilk() {
+		int rand = (int) (Math.random() * (MilkBase.values().length - 1));
+		return MilkBase.values()[rand];
 	}
 }

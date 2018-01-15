@@ -14,15 +14,12 @@ public enum ChewingGumBase {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public static ChewingGumBase getRandomChewingGum() {
+		int rand = (int) (Math.random() * (ChewingGumBase.values().length - 1));
+		return ChewingGumBase.values()[rand];
 	}
 }

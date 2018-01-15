@@ -14,16 +14,13 @@ public enum AppleBase {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public static AppleBase getRandomApple() {
+		int rand = (int) (Math.random() * (AppleBase.values().length - 1));
+		return AppleBase.values()[rand];
 	}
 
 }

@@ -14,16 +14,12 @@ public enum GrapeBase {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public static GrapeBase getRandomGrape() {
+		int rand = (int) (Math.random() * (GrapeBase.values().length - 1));
+		return GrapeBase.values()[rand];
 	}
-
 }
