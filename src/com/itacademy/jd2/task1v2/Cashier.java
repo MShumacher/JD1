@@ -15,11 +15,13 @@ public class Cashier extends Thread {
 		System.out.println(String.format("Start %s ", this.name));
 		this.start();
 	}
-	
+
 	@Override
 	public String toString() {
 		return name;
 	}
+
+	@Override
 	public void run() {
 		while (true) {
 			synchronized (queue) {
