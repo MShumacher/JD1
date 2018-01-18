@@ -10,13 +10,11 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		Queue<Car> queue = new ConcurrentLinkedQueue<Car>();
 		// List<Column> columns = new ArrayList<Column>();
-		List<Fuel> tanks = new ArrayList<Fuel>();
+		List<Car> tanks = new ArrayList<Car>();
 		for (int i = 0; i < Fuel.values().length; i++) {
-			Fuel tank = Fuel.values()[i];
-			tank.setCount(1000);
+			Car tank = new Car(Fuel.values()[i].name(), 1000);
 			tanks.add(tank);
-			System.out.println(String.format("Tank[%s] has %s litеr of %s", i + 1, tanks.get(i).getCount(),
-					tanks.get(i).getTitleRu()));
+			System.out.println(String.format("Tank[%s] has %s litеr of %s", i + 1, tank.getSizeTank(), tank.getFuel()));
 		}
 		for (int i = 0; i < 5; i++) {
 			Column column = new Column(queue, tanks);
@@ -28,7 +26,7 @@ public class Main {
 			int fuel = (int) (Math.random() * 3);
 			synchronized (queue) {
 				if (queue.isEmpty()) {
-					queue.add(new Car(Fuel.values()[fuel].name()));
+					queue.add(new Car(Fuel.values()[fuel].name(), 1 + (int) (Math.random() * 20)));
 					System.out.println(String.format("Car[%s] add to queue.", countCar++));
 					queue.notify();
 				}

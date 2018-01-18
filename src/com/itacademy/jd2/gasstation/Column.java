@@ -5,11 +5,11 @@ import java.util.Queue;
 
 public class Column extends Thread {
 	private Queue<Car> queue;
-	private List<Fuel> tanks;
+	private List<Car> tanks;
 	private String name;
 	private Car myCar;
 
-	public Column(Queue<Car> queue, List<Fuel> tanks) {
+	public Column(Queue<Car> queue, List<Car> tanks) {
 		super();
 		this.queue = queue;
 		this.tanks = tanks;
@@ -45,12 +45,13 @@ public class Column extends Thread {
 
 	public boolean serveCarIfCan() {
 		synchronized (tanks) {
-			for (Fuel tank : tanks) {
-				if ((tank.name() == myCar.getFuel()) && (tank.getCount() >= myCar.getSizeTank())) {
-					tank.setCount(tank.getCount() - myCar.getSizeTank());
+			for (Car tank : tanks) {
+				if ((tank.getFuel() == myCar.getFuel()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
+					tank.setSizeTank(tank.getSizeTank() - myCar.getSizeTank());
 					System.out.println(
-							String.format("Car %s [%s] starts to fill up.", tank.getTitleRu(), myCar.getSizeTank()));
-					System.out.println(String.format("[%s]: remains %s", tank.getTitleRu(), tank.getCount()));
+							String.format("Car %s [%s] starts to fill up.", tank.getFuel(), myCar.getSizeTank()));
+					System.out.println(
+							String.format("%s [%s]: remains %s", this.name, tank.getFuel(), tank.getSizeTank()));
 					return true;
 				}
 			}

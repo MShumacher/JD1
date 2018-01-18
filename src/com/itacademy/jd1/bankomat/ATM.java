@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.itacademy.classwork.bankomat.Slot;
-
 public class ATM {
 	private List<Cell> cells;
 	private List<Cell> currentOperation;

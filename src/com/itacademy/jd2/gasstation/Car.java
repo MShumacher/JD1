@@ -12,9 +12,13 @@ public class Car {
 		return sizeTank;
 	}
 
-	public Car(String fuel) {
+	public void setSizeTank(int sizeTank) {
+		this.sizeTank = sizeTank;
+	}
+
+	public Car(String fuel, int sizeTank) {
 		this.fuel = fuel;
-		this.sizeTank = 1 + (int) (Math.random() * 20);
+		this.sizeTank = sizeTank;
 	}
 
 }
