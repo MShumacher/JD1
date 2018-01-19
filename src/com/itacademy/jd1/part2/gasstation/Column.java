@@ -46,12 +46,12 @@ public class Column extends Thread {
 	public boolean serveCarIfCan() {
 		synchronized (tanks) {
 			for (Car tank : tanks) {
-				if ((tank.getFuel() == myCar.getFuel()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
+				if ((tank.getFuelType() == myCar.getFuelType()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
 					tank.setSizeTank(tank.getSizeTank() - myCar.getSizeTank());
+					System.out.println(String.format("%s [%s]: car [%s] starts to fill up.", this.name, tank.getFuelType(),
+							myCar.getSizeTank()));
 					System.out.println(
-							String.format("Car %s [%s] starts to fill up.", tank.getFuel(), myCar.getSizeTank()));
-					System.out.println(
-							String.format("%s [%s]: remains %s", this.name, tank.getFuel(), tank.getSizeTank()));
+							String.format("%s [%s]: remains %s", this.name, tank.getFuelType(), tank.getSizeTank()));
 					return true;
 				}
 			}

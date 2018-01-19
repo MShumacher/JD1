@@ -11,10 +11,11 @@ public class Main {
 		Queue<Car> queue = new ConcurrentLinkedQueue<Car>();
 		// List<Column> columns = new ArrayList<Column>();
 		List<Car> tanks = new ArrayList<Car>();
-		for (int i = 0; i < Fuel.values().length; i++) {
-			Car tank = new Car(Fuel.values()[i].name(), 1000);
+		for (int i = 0; i < FuelType.values().length; i++) {
+			Car tank = new Car(FuelType.values()[i], 1000);
 			tanks.add(tank);
-			System.out.println(String.format("Tank[%s] has %s litеr of %s", i + 1, tank.getSizeTank(), tank.getFuel()));
+			System.out.println(
+					String.format("Tank[%s] has %s litеr of %s", i + 1, tank.getSizeTank(), tank.getFuelType()));
 		}
 		for (int i = 0; i < 5; i++) {
 			Column column = new Column(queue, tanks);
@@ -26,7 +27,7 @@ public class Main {
 			int fuel = (int) (Math.random() * 3);
 			synchronized (queue) {
 				if (queue.isEmpty()) {
-					queue.add(new Car(Fuel.values()[fuel].name(), 1 + (int) (Math.random() * 20)));
+					queue.add(new Car(FuelType.values()[fuel], 1 + (int) (Math.random() * 20)));
 					System.out.println(String.format("Car[%s] add to queue.", countCar++));
 					queue.notify();
 				}

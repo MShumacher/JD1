@@ -1,11 +1,11 @@
 package com.itacademy.jd1.part2.gasstation;
 
 public class Car {
-	private String fuel;
+	private FuelType fuelType;
 	private int sizeTank;
 
-	public String getFuel() {
-		return fuel;
+	public FuelType getFuelType() {
+		return fuelType;
 	}
 
 	public int getSizeTank() {
@@ -16,8 +16,8 @@ public class Car {
 		this.sizeTank = sizeTank;
 	}
 
-	public Car(String fuel, int sizeTank) {
-		this.fuel = fuel;
+	public Car(FuelType fuelType, int sizeTank) {
+		this.fuelType = fuelType;
 		this.sizeTank = sizeTank;
 	}
 
