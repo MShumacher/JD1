@@ -1,6 +1,6 @@
 package com.itacademy.jd1.part2.gasstation;
 
-public class FuelHolder {
+public abstract class FuelHolder {
 	private FuelType fuelType;
 	private int sizeTank;
 

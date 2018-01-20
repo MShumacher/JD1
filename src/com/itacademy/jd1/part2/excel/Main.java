@@ -1,23 +1,20 @@
 package com.itacademy.jd1.part2.excel;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Excel start.");
 		String s = "";
 		do {
 			System.out.println("Please, enter command.(\"-h\" for help)");
-			// s = scan.next();
-			Menu menu = new Menu("-h", "-create", "-open", "-exit");
-			// menu1.print(s = scan.next());
 			s = scan.next();
-			if (isValidOption(s)) {
-			}
-
-			switch (s = scan.next()) {
+			Menu menu = new Menu();
+			switch (s) {
 			case "-h":
 				menu.h();
 				break;
@@ -32,16 +29,7 @@ public class Main {
 			default:
 				System.out.println("\"-h\" for help.");
 			}
-
 		} while (!s.equals("-exit"));
-	}
-
-	private static boolean isValidOption(String s) {
-		for (int i = 0; i < Menu1.values().length; i++) {
-			if (s.equals(Menu1.values()[i])) {
-				return true;
-			}
-		}
-		return false;
+		System.out.println("Thank you for choosing our excel.");
 	}
 }

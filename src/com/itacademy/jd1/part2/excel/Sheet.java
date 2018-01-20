@@ -1,9 +1,10 @@
 package com.itacademy.jd1.part2.excel;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Sheet {
+public class Sheet implements Serializable{
 	private Map<Integer, Row> sheet = new TreeMap<Integer, Row>();
 
 	public Sheet(Row row, int position) {
