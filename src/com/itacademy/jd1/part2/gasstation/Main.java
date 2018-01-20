@@ -10,9 +10,9 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		Queue<Car> queue = new ConcurrentLinkedQueue<Car>();
 		// List<Column> columns = new ArrayList<Column>();
-		List<Car> tanks = new ArrayList<Car>();
+		List<Tank> tanks = new ArrayList<Tank>();
 		for (int i = 0; i < FuelType.values().length; i++) {
-			Car tank = new Car(FuelType.values()[i], 1000);
+			Tank tank = new Tank(FuelType.values()[i], 1000);
 			tanks.add(tank);
 			System.out.println(
 					String.format("Tank[%s] has %s litеr of %s", i + 1, tank.getSizeTank(), tank.getFuelType()));

@@ -5,11 +5,11 @@ import java.util.Queue;
 
 public class Column extends Thread {
 	private Queue<Car> queue;
-	private List<Car> tanks;
+	private List<Tank> tanks;
 	private String name;
-	private Car myCar;
+	private FuelHolder myCar;
 
-	public Column(Queue<Car> queue, List<Car> tanks) {
+	public Column(Queue<Car> queue, List<Tank> tanks) {
 		super();
 		this.queue = queue;
 		this.tanks = tanks;
@@ -35,7 +35,7 @@ public class Column extends Thread {
 				}
 			} while (!serveCarIfCan());
 			try {
-				Thread.sleep(myCar.getSizeTank() * 1000);
+				Thread.sleep(myCar.getSizeTank() * 10);
 				System.out.println(String.format("%s is free.", this.name));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -45,7 +45,7 @@ public class Column extends Thread {
 
 	public boolean serveCarIfCan() {
 		synchronized (tanks) {
-			for (Car tank : tanks) {
+			for (FuelHolder tank : tanks) {
 				if ((tank.getFuelType() == myCar.getFuelType()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
 					tank.setSizeTank(tank.getSizeTank() - myCar.getSizeTank());
 					System.out.println(String.format("%s [%s]: car [%s] starts to fill up.", this.name, tank.getFuelType(),

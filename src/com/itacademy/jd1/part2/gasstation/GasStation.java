@@ -3,10 +3,10 @@ package com.itacademy.jd1.part2.gasstation;
 import java.util.List;
 
 public class GasStation {
-	private List<Car> tanks;
+	private List<Tank> tanks;
 	// private List<Column> columns;
 
-	public GasStation(List<Car> tanks) {
+	public GasStation(List<Tank> tanks) {
 		this.tanks = tanks;
 		// this.columns = columns;
 	}
@@ -14,7 +14,7 @@ public class GasStation {
 	public boolean isEmpty() {
 		int volume = 0;
 		synchronized (tanks) {
-			for (Car tank : tanks) {
+			for (FuelHolder tank : tanks) {
 				volume += tank.getSizeTank();
 			}
 			if (volume == 0) {
