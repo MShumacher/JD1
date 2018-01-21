@@ -25,7 +25,7 @@ public class Column extends Thread {
 			if (myCar != null) {
 				serveCar();
 				try {
-					Thread.sleep(myCar.getSizeTank() * 100);
+					Thread.sleep(myCar.getSizeTank() * 1000);
 					System.out.println(String.format("%s is free.", this.name));
 				} catch (InterruptedException e) {
 					e.printStackTrace();
