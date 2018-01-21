@@ -15,7 +15,6 @@ public class Column extends Thread {
 		this.tanks = tanks;
 		this.name = String.format("%s %s", getClass().getSimpleName(), getName());
 		System.out.println(String.format("Start %s ", this.name));
-		this.setDaemon(true);
 		this.start();
 	}
 
