@@ -12,29 +12,24 @@ public class Main {
 		// List<Column> columns = new ArrayList<Column>();
 		List<Tank> tanks = new ArrayList<Tank>();
 		for (int i = 0; i < FuelType.values().length; i++) {
-			Tank tank = new Tank(FuelType.values()[i], 1000);
+			Tank tank = new Tank(FuelType.values()[i], 100);
 			tanks.add(tank);
 			System.out.println(
 					String.format("Tank[%s] has %s litеr of %s", i + 1, tank.getSizeTank(), tank.getFuelType()));
 		}
+		GasStation gasStation = new GasStation(tanks/* ,columns */);
 		for (int i = 0; i < 5; i++) {
-			Column column = new Column(queue, tanks);
+			Column column = new Column(queue, gasStation);
 			// columns.add(column);
 		}
-		GasStation gasStation = new GasStation(tanks/* ,columns */);
 		int countCar = 1;
 		while (!gasStation.isEmpty()) {
 			int fuel = (int) (Math.random() * FuelType.values().length);
-			synchronized (queue) {
-				if (queue.isEmpty()) {
-					queue.add(new Car(FuelType.values()[fuel], 1 + (int) (Math.random() * 20)));
-					System.out.println(String.format("Car №%s add to queue.", countCar++));
-					queue.notify();
-				}
+			if (queue.isEmpty()) {
+				queue.add(new Car(FuelType.values()[fuel], 1 + (int) (Math.random() * 20)));
+				System.out.println(String.format("Car №%s add to queue.", countCar++));
 			}
-			// Thread.sleep(100);
 		}
 		System.out.println("GasStation is empty.");
 	}
-
 }

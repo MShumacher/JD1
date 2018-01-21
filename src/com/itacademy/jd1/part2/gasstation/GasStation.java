@@ -6,6 +6,10 @@ public class GasStation {
 	private List<Tank> tanks;
 	// private List<Column> columns;
 
+	public List<Tank> getTanks() {
+		return tanks;
+	}
+
 	public GasStation(List<Tank> tanks) {
 		this.tanks = tanks;
 		// this.columns = columns;
