@@ -35,7 +35,7 @@ public class Column extends Thread {
 				}
 			} while (!serveCarIfCan());
 			try {
-				Thread.sleep(myCar.getSizeTank() * 10);
+				Thread.sleep(myCar.getSizeTank() * 1000);
 				System.out.println(String.format("%s is free.", this.name));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -48,14 +48,14 @@ public class Column extends Thread {
 			for (FuelHolder tank : tanks) {
 				if ((tank.getFuelType() == myCar.getFuelType()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
 					tank.setSizeTank(tank.getSizeTank() - myCar.getSizeTank());
-					System.out.println(String.format("%s [%s]: car [%s] starts to fill up.", this.name, tank.getFuelType(),
-							myCar.getSizeTank()));
+					System.out.println(String.format("%s [%s]: car with sizetank[%s] start to fill up.", this.name,
+							tank.getFuelType(), myCar.getSizeTank()));
 					System.out.println(
 							String.format("%s [%s]: remains %s", this.name, tank.getFuelType(), tank.getSizeTank()));
 					return true;
 				}
 			}
-			System.out.println("Can't fill the car. Car goes out.");
+			System.out.println("Can't fill the car. Car go out.");
 			return false;
 		}
 	}

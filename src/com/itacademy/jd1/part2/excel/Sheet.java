@@ -4,15 +4,19 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Sheet implements Serializable{
+public class Sheet implements Serializable {
 	private Map<Integer, Row> sheet = new TreeMap<Integer, Row>();
 
-	public Sheet(Row row, int position) {
-		this.sheet.put(position, row);
+	public Sheet(int i, Row row) {
+		this.sheet.put(i, row);
 	}
 
 	public Row getRow(int i) {
 		return this.sheet.get(i);
+	}
+
+	public void setRow(int i, Row row) {
+		this.sheet.put(i, row);
 	}
 
 	public void PrintCell(int i, int j) {

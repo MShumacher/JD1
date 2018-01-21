@@ -14,7 +14,9 @@ public class Menu {
 		String fileName = scan.next();
 		try (FileInputStream fis = new FileInputStream(fileName); ObjectInputStream ois = new ObjectInputStream(fis);) {
 			Sheet sheet = (Sheet) ois.readObject();
-			this.workWithFile(sheet);
+			ois.close();
+			// System.out.println(sheet);
+			workWithFile(sheet);
 		}
 	}
 
@@ -29,8 +31,8 @@ public class Menu {
 		System.out.println("New excelfile was created.");
 		Cell cell = new Cell();
 		Row row = new Row(cell, 0);
-		Sheet sheet = new Sheet(row, 0);
-		this.workWithFile(sheet);
+		Sheet sheet = new Sheet(0, row);
+		workWithFile(sheet);
 	}
 
 	public void workWithFile(Sheet sheet) throws FileNotFoundException, IOException {
@@ -49,10 +51,25 @@ public class Menu {
 				menu2.saveFile(sheet);
 				break;
 			case "-editCell":
-				menu2.editCell();
+				int i;
+				int j;
+				do {
+					System.out.println("Please, enter cell address. Enter number row");
+					i = scan.nextInt();
+					System.out.println("Enter number col");
+					j = scan.nextInt();
+				} while (!isAddressValid(i, j)); {
+				menu2.editCell(sheet, i, j);
+			}
 				break;
 			case "-readCell":
-				menu2.readCell();
+				do {
+					System.out.println("Please, enter cell address. Enter number row");
+					i = scan.nextInt();
+					System.out.println("Enter number col");
+					j = scan.nextInt();
+				} while (!isAddressValid(i, j));
+				menu2.readCell(sheet, i, j);
 				break;
 			case "-exit":
 				break;
@@ -61,5 +78,14 @@ public class Menu {
 			}
 		} while (!s.equals("-exit"));
 
+	}
+
+	public boolean isAddressValid(int i, int j) {
+		if ((i <= 1000) && (j < 30)) {
+			return true;
+		} else {
+			return false;
+		}
+		// return address.matches("\\[[0-9]+,[A-Z]\\]");
 	}
 }

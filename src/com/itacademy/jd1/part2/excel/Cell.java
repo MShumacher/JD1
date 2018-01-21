@@ -1,17 +1,19 @@
 package com.itacademy.jd1.part2.excel;
 
-public class Cell {
-	private String value;
+import java.io.Serializable;
 
-	public String getValue() {
-		return value;
-	}
+public class Cell implements Serializable {
+	private String value;
 
 	public Cell(String value) {
 		this.value = value;
 	}
 
 	public Cell() {
+	}
+
+	public String getValue() {
+		return value;
 	}
 
 	public void setValue(String value) {

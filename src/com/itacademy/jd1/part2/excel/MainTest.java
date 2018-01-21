@@ -7,12 +7,14 @@ public class MainTest {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		Cell cell = new Cell();
+		cell.setValue("hello");
+		int i = scan.nextInt();
 		int j = scan.nextInt();
 		Row row = new Row(cell, j);
-		int i = scan.nextInt();
-		Sheet sheet1 = new Sheet(row, i);
-		sheet1.SetCell(i, j, "hello");
-		sheet1.PrintCell(i, j);
-		sheet1.PrintCell(3, j);
+
+		Sheet sheet1 = new Sheet(i,row);
+//		sheet1.getRow(i).getCell(1).setValue("hello");
+		sheet1.PrintCell(i, 1);
+		sheet1.PrintCell(3, 1);
 	}
 }

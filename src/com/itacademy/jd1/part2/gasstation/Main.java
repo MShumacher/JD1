@@ -24,11 +24,11 @@ public class Main {
 		GasStation gasStation = new GasStation(tanks/* ,columns */);
 		int countCar = 1;
 		while (!gasStation.isEmpty()) {
-			int fuel = (int) (Math.random() * 3);
+			int fuel = (int) (Math.random() * FuelType.values().length);
 			synchronized (queue) {
 				if (queue.isEmpty()) {
 					queue.add(new Car(FuelType.values()[fuel], 1 + (int) (Math.random() * 20)));
-					System.out.println(String.format("Car[%s] add to queue.", countCar++));
+					System.out.println(String.format("Car №%s add to queue.", countCar++));
 					queue.notify();
 				}
 			}
