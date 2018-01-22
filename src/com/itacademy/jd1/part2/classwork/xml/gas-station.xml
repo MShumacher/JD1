@@ -1,0 +1,25 @@
+<gas-station>
+	<tanks>
+		<tank>
+			<fuel_type>petrol_92</fuel_type>
+			<volume>1000</volume>
+		</tank>
+		<tank fuel_type="petrol_95" volume="1000">
+		</tank>
+		<tank fuel_type="diesel" volume="1000" />
+	</tanks>
+	<stations>
+		<station>
+			<number>1</number>
+			<fuel_type>petrol_92</fuel_type>
+		</station>
+		<station>
+			<number>2</number>
+			<fuel_type>petrol_95</fuel_type>
+		</station>
+		<station>
+			<number>3</number>
+			<fuel_type>diesel</fuel_type>
+		</station>
+	</stations>
+</gas-station>
