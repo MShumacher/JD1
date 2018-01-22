@@ -35,17 +35,18 @@ public class Column extends Thread {
 	}
 
 	private void serveCar() {
-		for (FuelHolder tank : gasStation.getTanks()) {
-			if ((tank.getFuelType() == myCar.getFuelType()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
-				tank.setSizeTank(tank.getSizeTank() - myCar.getSizeTank());
-				System.out.println(String.format("%s [%s]: car with tanksize[%s] start to fill up.", this.name,
-						tank.getFuelType(), myCar.getSizeTank()));
-				System.out.println(
-						String.format("%s [%s]: remains %s", this.name, tank.getFuelType(), tank.getSizeTank()));
-				return;
+		synchronized (gasStation) {
+			for (FuelHolder tank : gasStation.getTanks()) {
+				if ((tank.getFuelType() == myCar.getFuelType()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
+					tank.setSizeTank(tank.getSizeTank() - myCar.getSizeTank());
+					System.out.println(String.format("%s [%s]: car with tanksize[%s] start to fill up.", this.name,
+							tank.getFuelType(), myCar.getSizeTank()));
+					System.out.println(
+							String.format("%s [%s]: remains %s", this.name, tank.getFuelType(), tank.getSizeTank()));
+					return;
+				}
 			}
+			System.out.println("Can't fill the car. Car go out.");
 		}
-		System.out.println("Can't fill the car. Car go out.");
 	}
-
 }
