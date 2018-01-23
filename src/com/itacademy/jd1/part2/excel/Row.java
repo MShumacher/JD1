@@ -5,16 +5,17 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Row implements Serializable {
-	private Map<Integer, Cell> row = new TreeMap<Integer, Cell>();
+	private Map<String, Cell> row = new TreeMap<String, Cell>();
 
-	public Row(Cell cell, int i) {
-		this.row.put(i, cell);
+	public Row(String j, Cell cell) {
+		this.row.put(j, cell);
 	}
 
-	public Cell getCell(int j) {
+	public Cell getCell(String j) {
 		return this.row.get(j);
 	}
-	public void setCell(int j,Cell cell) {
-		this.row.put(j,cell);
+
+	public void setCell(String j, Cell cell) {
+		this.row.put(j, cell);
 	}
 }

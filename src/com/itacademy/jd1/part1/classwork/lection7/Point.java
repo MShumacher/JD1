@@ -1,7 +1,5 @@
 package com.itacademy.jd1.part1.classwork.lection7;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-
 public class Point {
 	private int x;
 	private int y;

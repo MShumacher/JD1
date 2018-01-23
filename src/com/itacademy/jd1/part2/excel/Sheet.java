@@ -19,7 +19,7 @@ public class Sheet implements Serializable {
 		this.sheet.put(i, row);
 	}
 
-	public void PrintCell(int i, int j) {
+	public void PrintCell(int i, String j) {
 		if (this.getRow(i) != null) {
 			System.out.println(String.format("[%s,%s]=%s", i, j, this.getRow(i).getCell(j).getValue()));
 		} else {
@@ -27,14 +27,14 @@ public class Sheet implements Serializable {
 		}
 	}
 
-	public Cell GetCell(int i, int j) {
+	public Cell GetCell(int i, String j) {
 		if (this.getRow(i) != null) {
 			return this.getRow(i).getCell(j);
 		} else
 			return null;
 	}
 
-	public void SetCell(int i, int j, String value) {
+	public void SetCell(int i, String j, String value) {
 		this.getRow(i).getCell(j).setValue(value);
 	}
 }
