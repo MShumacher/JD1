@@ -1,10 +1,11 @@
-package com.itacademy.jd1.part2.excelnew.commands;
+package com.itacademy.jd1.part2.excel.commands;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import com.itacademy.jd1.part2.excelnew.Sheet;
+
+import com.itacademy.jd1.part2.excel.Sheet;
 
 public class CommandOpenFile extends CommandForFile {
 

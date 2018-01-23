@@ -7,15 +7,23 @@ import java.util.TreeMap;
 public class Row implements Serializable {
 	private Map<String, Cell> row = new TreeMap<String, Cell>();
 
-	public Row(String j, Cell cell) {
-		this.row.put(j, cell);
+	public Row() {
+		super();
 	}
 
 	public Cell getCell(String j) {
-		return this.row.get(j);
+		return row.get(j);
 	}
 
-	public void setCell(String j, Cell cell) {
-		this.row.put(j, cell);
+	public void addCell(String j, Cell cell) {
+		row.put(j, cell);
+	}
+
+	public boolean isCellExist(String j) {
+		if (getCell(j) == null) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

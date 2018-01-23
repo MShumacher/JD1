@@ -1,12 +1,12 @@
-package com.itacademy.jd1.part2.excelnew.commands;
+package com.itacademy.jd1.part2.excel.commands;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.itacademy.jd1.part2.excelnew.Command;
-import com.itacademy.jd1.part2.excelnew.Menu;
-import com.itacademy.jd1.part2.excelnew.Sheet;
+import com.itacademy.jd1.part2.excel.Command;
+import com.itacademy.jd1.part2.excel.Menu;
+import com.itacademy.jd1.part2.excel.Sheet;
 
 public abstract class CommandForFile extends Command {
 

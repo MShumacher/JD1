@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Scanner;
 
-import com.itacademy.jd1.part2.excelnew.Sheet;
-
 public class MainTest {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -21,9 +19,17 @@ public class MainTest {
 			sheet = (Sheet) ois.readObject();
 			ois.close();
 		}
+		Row row = new Row();
 		Cell cell = new Cell();
-		sheet.getRow(1).getCell("A").setValue("hello");
-		sheet.getRow(1).getCell("A").getValue();
-		sheet.getRow(1).getCell("B").getValue();
+		row.addCell("A", cell);
+		sheet.addRow(1, row);
+		// sheet.getRow(1).getCell("A").setValue("hello");
+		System.out.println(sheet.getRow(1).getCell("A").getValue());
+		try {
+			System.out.println(sheet.getRow(1).getCell("B").getValue());
+		} catch (NullPointerException e) {
+			System.out.println("Cell doesn't exist.");
+		}
+
 	}
 }

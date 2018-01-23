@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.excelnew;
+package com.itacademy.jd1.part2.excel;
 
 public abstract class Command {
 	private String value;

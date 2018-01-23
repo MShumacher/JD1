@@ -1,6 +1,6 @@
-package com.itacademy.jd1.part2.excelnew.commands;
+package com.itacademy.jd1.part2.excel.commands;
 
-import com.itacademy.jd1.part2.excelnew.Sheet;
+import com.itacademy.jd1.part2.excel.Sheet;
 
 public class CommandNewFile extends CommandForFile {
 

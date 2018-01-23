@@ -7,34 +7,23 @@ import java.util.TreeMap;
 public class Sheet implements Serializable {
 	private Map<Integer, Row> sheet = new TreeMap<Integer, Row>();
 
-	public Sheet(int i, Row row) {
-		this.sheet.put(i, row);
+	public Sheet() {
+		super();
 	}
 
 	public Row getRow(int i) {
-		return this.sheet.get(i);
+		return sheet.get(i);
 	}
 
-	public void setRow(int i, Row row) {
-		this.sheet.put(i, row);
+	public void addRow(Integer i, Row row) {
+		sheet.put(i, row);
 	}
 
-	public void PrintCell(int i, String j) {
-		if (this.getRow(i) != null) {
-			System.out.println(String.format("[%s,%s]=%s", i, j, this.getRow(i).getCell(j).getValue()));
+	public boolean isRowExist(int i) {
+		if (getRow(i) == null) {
+			return false;
 		} else {
-			System.out.println(String.format("[%s,%s]=%s", i, j, "null"));
+			return true;
 		}
-	}
-
-	public Cell GetCell(int i, String j) {
-		if (this.getRow(i) != null) {
-			return this.getRow(i).getCell(j);
-		} else
-			return null;
-	}
-
-	public void SetCell(int i, String j, String value) {
-		this.getRow(i).getCell(j).setValue(value);
 	}
 }
