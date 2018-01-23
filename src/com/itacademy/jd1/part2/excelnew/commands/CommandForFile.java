@@ -38,7 +38,7 @@ public abstract class CommandForFile extends Command {
 		secondLevelCommands.add(new CommandReadCell("read", "For read cell print", sheet));
 		secondLevelCommands.add(new CommandEditCell("edit", "For edit cell print", sheet));
 		secondLevelCommands.add(new CommandSaveFile("save", "For save file print", sheet));
-		secondLevelCommands.add(new CommandExit("exit", "For close file and exit to previous menu print", 2));
+		secondLevelCommands.add(new CommandExit("exit", "For close file and exit to previous menu print"));
 		Menu menu = new Menu(secondLevelCommands);
 		menu.execute();
 	}
