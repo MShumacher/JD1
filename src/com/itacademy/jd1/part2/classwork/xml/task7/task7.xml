@@ -1,17 +1,14 @@
 <pointsList>
-	<point>
+	<point unit="cm">
 		<x>2</x>
 		<y>3</y>
-		<unit>cm</unit>
 	</point>
-	<point>
+	<point unit="mm">
 		<x>2</x>
-		<y>3</y>
-		<unit>mm</unit>
+		<y>5</y>
 	</point>
-	<point>
+	<point unit="px">
 		<x>2</x>
 		<y>3</y>
-		<unit>px</unit>
 	</point>
 </pointsList>
