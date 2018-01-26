@@ -1,38 +1,30 @@
-package com.itacademy.jd1.part2.excel.commands;
+package com.itacademy.jd1.part2.excel.commands.forfile;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-
 import com.itacademy.jd1.part2.excel.Sheet;
+import com.itacademy.jd1.part2.excel.commands.CommandForFile;
 
-public class CommandSaveFile extends CommandForFile {
+public class CommandSave extends CommandForFile {
 
 	private Sheet sheet;
 
-	public CommandSaveFile(String value, String output, Sheet sheet) {
+	public CommandSave(String value, String output, Sheet sheet) {
 		super(value, output);
 		this.sheet = sheet;
 	}
 
 	@Override
 	public void execute() {
-		saveFile(sheet);
-	}
-
-	private void saveFile(Sheet sheet) {
 		String fileName = enterFileName();
 		try (FileOutputStream fos = new FileOutputStream(fileName);
 				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
-			oos.writeObject(sheet);
+			oos.writeObject(this.sheet);
 			oos.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(String.format("File %s was saved.", fileName));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Something was wrong. File wasn't saved. Please try again.");
 		}
 	}
 }

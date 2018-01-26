@@ -26,4 +26,9 @@ public class Sheet implements Serializable {
 			return true;
 		}
 	}
+	public String getCellValue(String s) {
+		Integer i = Integer.valueOf(s.substring(s.indexOf('[') + 1, s.indexOf(',')));
+		String j = s.substring(s.indexOf(',') + 1, s.indexOf(']'));
+		return this.sheet.get(i).getCell(j).getValue();
+	}
 }
