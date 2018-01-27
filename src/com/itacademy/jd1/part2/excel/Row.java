@@ -18,12 +18,4 @@ public class Row implements Serializable {
 	public void addCell(String j, Cell cell) {
 		row.put(j, cell);
 	}
-
-	public boolean isCellExist(String j) {
-		if (getCell(j) == null) {
-			return false;
-		} else {
-			return true;
-		}
-	}
 }

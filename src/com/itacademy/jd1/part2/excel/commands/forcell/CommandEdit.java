@@ -1,5 +1,6 @@
 package com.itacademy.jd1.part2.excel.commands.forcell;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import com.itacademy.jd1.part2.excel.Cell;
@@ -25,20 +26,21 @@ public class CommandEdit extends CommandForCell {
 		Integer i = Integer.valueOf(s.substring(s.indexOf('[') + 1, s.indexOf(',')));
 		String j = s.substring(s.indexOf(',') + 1, s.indexOf(']'));
 		System.out.println("Please type new value.");
-		Cell cell = new Cell();
+		Cell cell = new Cell(sheet);
 		Scanner scan = new Scanner(System.in);
-		cell.setValue(scan.next());
-		if (sheet.isRowExist(i)) {
-			if (sheet.getRow(i).isCellExist(j)) {
-				sheet.getRow(i).getCell(j).setValue(cell.getValue());
-			} else {
+		try {
+			cell.setValue(scan.next());
+			if (sheet.isRowExist(i)) {
 				sheet.getRow(i).addCell(j, cell);
+			} else {
+				Row row = new Row();
+				row.addCell(j, cell);
+				sheet.addRow(i, row);
 			}
-		} else {
-			Row row = new Row();
-			row.addCell(j, cell);
-			sheet.addRow(i, row);
+			System.out.println(String.format("Cell %s has been recorded.", s));
+		} catch (NumberFormatException | NoSuchElementException e) {
+			System.out.println("Incorrect value in one of the cells.");
+			enterNewValue(s);
 		}
-		System.out.println(String.format("Cell %s has been recorded.", s));
 	}
 }

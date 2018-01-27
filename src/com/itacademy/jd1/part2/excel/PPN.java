@@ -1,6 +1,7 @@
 package com.itacademy.jd1.part2.excel;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class PPN {
 
@@ -57,11 +58,10 @@ public class PPN {
 		case 'g':
 			st.add((l + r) / 2);
 			break;
-
 		}
 	}
 
-	public static int eval(String s) {
+	public static int eval(String s) throws NoSuchElementException {
 		LinkedList<Integer> st = new LinkedList<Integer>();
 		LinkedList<Character> op = new LinkedList<Character>();
 		for (int i = 0; i < s.length(); i++) {

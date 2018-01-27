@@ -1,13 +1,13 @@
 package com.itacademy.jd1.part2.gasstation;
 
-import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Column extends Thread {
 	private Queue<Car> queue;
 	private GasStation gasStation;
 	private String name;
-	private FuelHolder myCar;
+	private Car myCar;
 
 	public Column(Queue<Car> queue, GasStation gasStation) {
 		super();
@@ -20,33 +20,40 @@ public class Column extends Thread {
 
 	@Override
 	public void run() {
-		while (!gasStation.isEmpty()) {
+		while ((!gasStation.isEmpty()) || (!queue.isEmpty())) {
 			myCar = queue.poll();
 			if (myCar != null) {
 				serveCar();
-				try {
-					Thread.sleep(myCar.getSizeTank() * 1000);
-					System.out.println(String.format("%s is free.", this.name));
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				System.out.println(String.format("%s is free.", this.name));
 			}
 		}
 	}
 
 	private void serveCar() {
-		synchronized (gasStation) {
-			for (FuelHolder tank : gasStation.getTanks()) {
-				if ((tank.getFuelType() == myCar.getFuelType()) && (tank.getSizeTank() >= myCar.getSizeTank())) {
-					tank.setSizeTank(tank.getSizeTank() - myCar.getSizeTank());
-					System.out.println(String.format("%s [%s]: car with tanksize[%s] start to fill up.", this.name,
-							tank.getFuelType(), myCar.getSizeTank()));
-					System.out.println(
-							String.format("%s [%s]: remains %s", this.name, tank.getFuelType(), tank.getSizeTank()));
-					return;
+		Tank currentTank = gasStation.getTank(myCar.getFuelType());
+		AtomicInteger systemVolumeFuel = currentTank.getSystemVolumeFuel();
+		int carVolumeFuel = myCar.getVolumeFuel().get();
+
+		if (systemVolumeFuel.get() >= carVolumeFuel) {
+			systemVolumeFuel.getAndAdd(-carVolumeFuel);
+			System.out.println(String.format("%s [%s]: car №%s with tanksize[%s] start to fill up.", this.name,
+					currentTank.getFuelType(), myCar.getNumber(), carVolumeFuel));
+			try {
+				for (int i = 0; i < carVolumeFuel; i++) {
+					Thread.sleep(1000);
+					currentTank.getVolumeFuel().getAndDecrement();
+					// System.out.println(String.format("%s : car №%s tanks. Remains
+					// in tank[%s]:%s", this.name, myCar.getNumber(), currentTank.getFuelType(),
+					// currentTank.getVolumeFuel().get()));
 				}
+				System.out.println(String.format("%s : car №%s go out. Remains in system[%s]:%s", this.name,
+						myCar.getNumber(), currentTank.getFuelType(), systemVolumeFuel));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			System.out.println("Can't fill the car. Car go out.");
+			return;
 		}
+		System.out.println(String.format("%s [%s]: Can't fill the car №%s. Car go out.", this.name,
+				currentTank.getFuelType(), myCar.getNumber()));
 	}
 }

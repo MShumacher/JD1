@@ -1,24 +1,22 @@
 package com.itacademy.jd1.part2.gasstation;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class FuelHolder {
 	private FuelType fuelType;
-	private int sizeTank;
+	private AtomicInteger volumeFuel = new AtomicInteger(0);
 
 	public FuelType getFuelType() {
 		return fuelType;
 	}
 
-	public int getSizeTank() {
-		return sizeTank;
+	public AtomicInteger getVolumeFuel() {
+		return volumeFuel;
 	}
 
-	public void setSizeTank(int sizeTank) {
-		this.sizeTank = sizeTank;
-	}
-
-	public FuelHolder(FuelType fuelType, int sizeTank) {
+	public FuelHolder(FuelType fuelType, int volumeFuel) {
 		this.fuelType = fuelType;
-		this.sizeTank = sizeTank;
+		this.volumeFuel.set(volumeFuel);
 	}
 
 }

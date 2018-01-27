@@ -3,8 +3,8 @@ package com.itacademy.jd1.part2.excel.commands;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import com.itacademy.jd1.part2.excel.Command;
+import com.itacademy.jd1.part2.excel.Main;
 import com.itacademy.jd1.part2.excel.Menu;
 import com.itacademy.jd1.part2.excel.Sheet;
 import com.itacademy.jd1.part2.excel.commands.forcell.CommandEdit;
@@ -26,7 +26,11 @@ public abstract class CommandForFile extends Command {
 		String fileName = "";
 		do {
 			System.out.println("Please, type correct filename.(For example \"first.xls\")");
+			System.out.println("For exit to previous menu print \"exit\"");
 			fileName = scan.next();
+			if (fileName.equals("exit")) {
+				Main.main(null);
+			}
 		} while (!isFileNameCorrect(fileName));
 		return fileName;
 	}
