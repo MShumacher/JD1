@@ -1,14 +1,15 @@
 package com.itacademy.jd1.part2.excel.commands.forcell;
 
 import java.util.NoSuchElementException;
+import java.util.ResourceBundle;
 
 import com.itacademy.jd1.part2.excel.Sheet;
 import com.itacademy.jd1.part2.excel.commands.CommandForCell;
 
 public class CommandRead extends CommandForCell {
 
-	public CommandRead(String value, String output, Sheet sheet) {
-		super(value, output, sheet);
+	public CommandRead(String value, String output, ResourceBundle rb, Sheet sheet) {
+		super(value, output, rb, sheet);
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package com.itacademy.jd1.part2.excel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import com.itacademy.jd1.part2.excel.commands.CommandChangeLanguage;
 import com.itacademy.jd1.part2.excel.commands.CommandExit;
@@ -11,14 +13,15 @@ import com.itacademy.jd1.part2.excel.commands.forfile.CommandOpen;
 public class Main {
 
 	public static void main(String[] args) {
+		Locale currentLocale = new Locale("ru", "RU");
+		ResourceBundle rb = ResourceBundle.getBundle("ExcelBundle", currentLocale);
 		List<Command> firstLevelCommands = new ArrayList<Command>();
-		firstLevelCommands.add(new CommandChangeLanguage("language", "For change language print"));
-		firstLevelCommands.add(new CommandOpen("open", "For open exists file print"));
-		firstLevelCommands.add(new CommandNew("new", "For create new file print"));
-		firstLevelCommands.add(new CommandExit("exit", "For close programm print"));
-		Menu menu = new Menu(firstLevelCommands);
+		firstLevelCommands.add(new CommandChangeLanguage(rb.getString("language"), rb.getString("languageM"), rb));
+		firstLevelCommands.add(new CommandOpen(rb.getString("open"), rb.getString("openM"), rb));
+		firstLevelCommands.add(new CommandNew(rb.getString("new"), rb.getString("newM"), rb));
+		firstLevelCommands.add(new CommandExit(rb.getString("exit"), rb.getString("exitM"), rb));
+		Menu menu = new Menu(firstLevelCommands, rb);
 		menu.execute();
-		System.out.println("Thank you for choosing our excel.");
+		System.out.println(rb.getString("thank"));
 	}
-
 }

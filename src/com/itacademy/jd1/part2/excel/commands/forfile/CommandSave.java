@@ -3,6 +3,8 @@ package com.itacademy.jd1.part2.excel.commands.forfile;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ResourceBundle;
+
 import com.itacademy.jd1.part2.excel.Sheet;
 import com.itacademy.jd1.part2.excel.commands.CommandForFile;
 
@@ -10,8 +12,8 @@ public class CommandSave extends CommandForFile {
 
 	private Sheet sheet;
 
-	public CommandSave(String value, String output, Sheet sheet) {
-		super(value, output);
+	public CommandSave(String value, String output, ResourceBundle rb, Sheet sheet) {
+		super(value, output, rb);
 		this.sheet = sheet;
 	}
 

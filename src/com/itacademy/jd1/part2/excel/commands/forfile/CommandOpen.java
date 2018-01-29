@@ -2,16 +2,16 @@ package com.itacademy.jd1.part2.excel.commands.forfile;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ResourceBundle;
 
 import com.itacademy.jd1.part2.excel.Sheet;
 import com.itacademy.jd1.part2.excel.commands.CommandForFile;
 
 public class CommandOpen extends CommandForFile {
 
-	public CommandOpen(String value, String output) {
-		super(value, output);
+	public CommandOpen(String value, String output, ResourceBundle rb) {
+		super(value, output, rb);
 	}
 
 	@Override

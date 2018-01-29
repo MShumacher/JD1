@@ -1,18 +1,18 @@
 package com.itacademy.jd1.part2.excel.commands.forcell;
 
 import java.util.NoSuchElementException;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import com.itacademy.jd1.part2.excel.Cell;
-import com.itacademy.jd1.part2.excel.Command;
 import com.itacademy.jd1.part2.excel.Row;
 import com.itacademy.jd1.part2.excel.Sheet;
 import com.itacademy.jd1.part2.excel.commands.CommandForCell;
 
 public class CommandEdit extends CommandForCell {
 
-	public CommandEdit(String value, String output, Sheet sheet) {
-		super(value, output, sheet);
+	public CommandEdit(String value, String output, ResourceBundle rb, Sheet sheet) {
+		super(value, output, rb, sheet);
 	}
 
 	@Override

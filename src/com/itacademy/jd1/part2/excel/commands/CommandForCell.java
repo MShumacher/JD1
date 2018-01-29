@@ -1,5 +1,6 @@
 package com.itacademy.jd1.part2.excel.commands;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import com.itacademy.jd1.part2.excel.Command;
@@ -8,8 +9,8 @@ import com.itacademy.jd1.part2.excel.Sheet;
 public abstract class CommandForCell extends Command {
 	protected Sheet sheet;
 
-	public CommandForCell(String value, String output, Sheet sheet) {
-		super(value, output);
+	public CommandForCell(String value, String output, ResourceBundle rb, Sheet sheet) {
+		super(value, output, rb);
 		this.sheet = sheet;
 	}
 
