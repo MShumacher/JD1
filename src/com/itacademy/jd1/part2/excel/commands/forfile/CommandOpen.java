@@ -26,7 +26,6 @@ public class CommandOpen extends CommandForFile {
 		try (FileInputStream fis = new FileInputStream(fileName); ObjectInputStream ois = new ObjectInputStream(fis);) {
 			Sheet sheet = (Sheet) ois.readObject();
 			ois.close();
-			return sheet;
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			openFile(enterFileName());

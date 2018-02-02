@@ -1,3 +1,6 @@
 /bin/
 *.classpath
 *.project
+*.metadata
+*.recommenders
+*.class

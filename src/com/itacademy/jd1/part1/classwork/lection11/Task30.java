@@ -10,18 +10,17 @@ import java.util.List;
 public class Task30 {
 
 	public static void main(String[] args) throws IOException {
-		String filePath = "d:\\oleole\\JD1\\src\\com\\itacademy\\classwork\\lection11\\task30.txt";
+		String filePath = "f:\\Work\\Учеба\\it-academy\\JD1\\src\\com\\itacademy\\jd1\\part1\\classwork\\lection11\\task30.txt";
 		System.out.println(new File(filePath).exists());
-		List<String> lines = Files
-				.readAllLines(Paths.get(filePath), Charset.forName("cp1251"));
-	
+		List<String> lines = Files.readAllLines(Paths.get(filePath), Charset.forName("cp1251"));
+
 		int wordsCount = 0;
 		for (String string : lines) {
 			System.out.println(string);
 			String[] split = string.split(" ");
 			wordsCount += split.length;
 		}
-				System.out.println(String.format("Text in file has %s words.", wordsCount));
+		System.out.println(String.format("Text in file has %s words.", wordsCount));
 	}
 
 }
