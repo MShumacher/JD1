@@ -19,7 +19,7 @@ public class TestMain {
 	}
 
 	public static void enterField(Car car, Field field) {
-		System.out.println("Print " + field.getName().toString() + field.getName().toString());
+		System.out.println("Print " + field.getName().toString());
 		Scanner scan = new Scanner(System.in);
 		field.setAccessible(true);
 		try {

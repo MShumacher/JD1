@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class Car implements Serializable {
 	private String brand;
 	private String model;
+	private String fuelType;
 	private int year;
 	private int price;
-	private String fuelType;
 
 	public Car() {
 	}
@@ -66,4 +66,23 @@ public class Car implements Serializable {
 		return fuelType;
 	}
 
+	@Override
+	public boolean equals(Object car) {
+		if ((this.brand.equals(((Car) car).brand)) && (this.model.equals(((Car) car).model))
+				&& (this.fuelType.equals(((Car) car).fuelType)) && (this.price == (((Car) car).price))
+				&& (this.year == (((Car) car).year))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public Car match(CarRequest carRequest) {
+		if ((this.brand.equals(carRequest.getBrand()) && (this.model.equals(carRequest.getModel()))
+				&& (this.fuelType.equals(carRequest.getFuelType())) && (this.price == carRequest.getMaxPrice())
+				&& (this.year == carRequest.getMaxYear()))) {
+			return this;
+		}
+		return null;
+	}
 }

@@ -1,8 +1,8 @@
 package com.itacademy.jd1.part2.carmarket;
 
-public class CommandAdd extends CommandEnterCar {
+public class CommandDelete extends CommandEnterCar {
 
-	public CommandAdd(String value, String output) {
+	public CommandDelete(String value, String output) {
 		super(value, output);
 	}
 
@@ -10,8 +10,8 @@ public class CommandAdd extends CommandEnterCar {
 	public void execute() {
 		Car car = enterCar();
 		CarBase carBase = CarBase.getMyBase();
-		carBase.addCar(car);
-		System.out.println("Car added in carBase.");
+		carBase.deleteCar(car);
 		carBase.print();
 	}
+
 }
