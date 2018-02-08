@@ -30,6 +30,7 @@ public abstract class CommandEnterCar extends Command {
 
 		boolean fieldCanBeNull = true;
 		Integer brandId = enterCorrectBrand(brandDao, fieldCanBeNull);
+		abstractCar.setBrandId(brandId);
 
 		Integer modelId = enterCorrectModel(modelDao, brandId, fieldCanBeNull);
 		abstractCar.setModelId(modelId);
@@ -142,7 +143,11 @@ public abstract class CommandEnterCar extends Command {
 		Scanner scan = new Scanner(System.in);
 		System.out.println(String.format("Please enter correct model."));
 		System.out.println("All available model:");
-		printNames(modelDao.getAllByBrandId(brandId));
+		if (brandId == 0) {
+			System.out.println("0");
+		} else {
+			printNames(modelDao.getAllByBrandId(brandId));
+		}
 		model = scan.nextLine();
 		if ((fieldCanBeNull) && (model.equals("0"))) {
 			return 0;

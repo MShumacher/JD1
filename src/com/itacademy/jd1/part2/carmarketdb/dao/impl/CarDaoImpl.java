@@ -107,6 +107,9 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 		Statement statement = c.createStatement();
 		// where
 		String query = "select b.name,m.name,f.name,c.year,c.price from car c join model m on (c.model_id=m.id)join brand b on (m.brand_id=b.id)join fueltype f on(c.fueltype_id=f.id) where ";
+		if (abstractCar.getBrandId() != 0) {
+			query += "m.brand_id =" + abstractCar.getBrandId() + " and ";
+		}
 		if (abstractCar.getModelId() != 0) {
 			query += "c.model_id =" + abstractCar.getModelId() + " and ";
 		}
@@ -114,7 +117,7 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 			query += "c.fueltype_id =" + abstractCar.getFuelTypeId() + " and ";
 		}
 		if (abstractCar.getMaxPrice() != 0) {
-			query += " c.price between " + abstractCar.getPrice() + " and " + abstractCar.getMaxPrice();
+			query += " c.price between " + abstractCar.getPrice() + " and " + abstractCar.getMaxPrice() + " and ";
 		} else {
 			query += " c.price>=" + abstractCar.getPrice() + " and ";
 		}
@@ -123,7 +126,7 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 		} else {
 			query += " c.year>=" + abstractCar.getYear();
 		}
-
+		System.out.println(query);
 		statement.executeQuery(query);
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();
