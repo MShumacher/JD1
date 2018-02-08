@@ -3,10 +3,10 @@ package com.itacademy.jd1.part2.carmarketdb.model;
 public class Car {
 
 	private Integer id;
-	private Integer modelId;
 	private Integer fuelTypeId;
 	private Integer year;
 	private Integer price;
+	private Integer modelId;
 
 	public Integer getPrice() {
 		return price;

@@ -18,14 +18,14 @@ public class TestMain {
 		System.out.println(car);
 	}
 
-	public static void enterField(Car car, Field field) {
+	public static void enterField(Object car, Field field) {
 		System.out.println("Print " + field.getName().toString());
 		Scanner scan = new Scanner(System.in);
 		field.setAccessible(true);
 		try {
 			switch (field.getType().getSimpleName()) {
 			case "String":
-				String newField = scan.next().toLowerCase();
+				String newField = scan.nextLine().toLowerCase();
 				if (isFieldCorrect(field, newField)) {
 					field.set(car, newField);
 				}

@@ -1,15 +1,38 @@
 package com.itacademy.jd1.part2.carmarketdb.dao.impl;
 
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.itacademy.jd1.part2.carmarketdb.AbstractCar;
 import com.itacademy.jd1.part2.carmarketdb.dao.ICarDao;
 import com.itacademy.jd1.part2.carmarketdb.model.Car;
 
 public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
+
+	public void delete(Car car) throws SQLException, IllegalArgumentException, IllegalAccessException {
+		Connection c = getConnection();
+		Statement statement = c.createStatement();
+
+		List<String> namesColumns = getNamesColumns();
+		Class<?> clazz = car.getClass();
+		Field[] fields = clazz.getDeclaredFields();
+		String query = "delete from " + getTableName() + " where";
+
+		for (int i = 1; i < fields.length; i++) {
+			fields[i].setAccessible(true);
+			query += " " + namesColumns.get(i - 1) + "=" + fields[i].get(car) + " and";
+		}
+		query = query.substring(0, query.length() - 3);
+		statement.executeUpdate(query);
+		statement.close();
+		c.close();
+	}
 
 	@Override
 	protected Car handleRow(ResultSet resultSet) throws SQLException {
@@ -23,7 +46,7 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 	}
 
 	@Override
-	protected String getTableName() {
+	public String getTableName() {
 		return "car";
 	}
 
@@ -57,8 +80,9 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
-		statement.executeQuery(String.format("select * from %s where model_id=%s and fueltype_id=%s and year=%s and price=%s",
-				getTableName(), car.getModelId(), car.getFuelTypeId(), car.getYear(), car.getPrice()));
+		statement.executeQuery(
+				String.format("select * from %s where model_id=%s and fueltype_id=%s and year=%s and price=%s",
+						getTableName(), car.getModelId(), car.getFuelTypeId(), car.getYear(), car.getPrice()));
 
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();
@@ -74,4 +98,43 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 		return result;
 
 	}
+
+	@Override
+	public void findAndPrint(AbstractCar abstractCar)
+			throws SQLException, IllegalArgumentException, IllegalAccessException {
+		Connection c = getConnection();
+
+		Statement statement = c.createStatement();
+		// where
+		String query = "select b.name,m.name,f.name,c.year,c.price from car c join model m on (c.model_id=m.id)join brand b on (m.brand_id=b.id)join fueltype f on(c.fueltype_id=f.id) where ";
+		if (abstractCar.getModelId() != 0) {
+			query += "c.model_id =" + abstractCar.getModelId() + " and ";
+		}
+		if (abstractCar.getFuelTypeId() != 0) {
+			query += "c.fueltype_id =" + abstractCar.getFuelTypeId() + " and ";
+		}
+		if (abstractCar.getMaxPrice() != 0) {
+			query += " c.price between " + abstractCar.getPrice() + " and " + abstractCar.getMaxPrice();
+		} else {
+			query += " c.price>=" + abstractCar.getPrice() + " and ";
+		}
+		if (abstractCar.getMaxYear() != 0) {
+			query += " c.year between " + abstractCar.getYear() + " and " + abstractCar.getMaxYear();
+		} else {
+			query += " c.year>=" + abstractCar.getYear();
+		}
+
+		statement.executeQuery(query);
+		ResultSet resultSet = statement.getResultSet();
+		boolean hasNext = resultSet.next();
+		while (hasNext) {
+			System.out.println(String.format("%s | %s | %s | %s | %s", resultSet.getString(1), resultSet.getString(2),
+					resultSet.getString(3), resultSet.getString(4), resultSet.getString(5)));
+			hasNext = resultSet.next();
+		}
+		resultSet.close();
+		statement.close();
+		c.close();
+	}
+
 }

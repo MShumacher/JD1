@@ -2,8 +2,8 @@ package com.itacademy.jd1.part2.carmarketdb.model;
 
 public class Model {
 	private Integer id;
-	private Integer brandId;
 	private String name;
+	private Integer brandId;
 
 	public Integer getId() {
 		return id;

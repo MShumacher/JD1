@@ -2,25 +2,22 @@ package com.itacademy.jd1.part2.carmarketdb.command;
 
 import java.sql.SQLException;
 
-import com.itacademy.jd1.part2.carmarketdb.dao.ICarDao;
-import com.itacademy.jd1.part2.carmarketdb.dao.impl.CarDaoImpl;
-import com.itacademy.jd1.part2.carmarketdb.model.Car;
+import com.itacademy.jd1.part2.carmarketdb.dao.IBaseDao;
 
-public class CommandDelete extends CommandEnterCar {
+public class CommandDelete extends CommandDao {
 
-	public CommandDelete(String value, String output) {
-		super(value, output);
+	public CommandDelete(String value, String output, IBaseDao dao, Object object) {
+		super(value, output, dao, object);
 	}
 
 	@Override
-	public void execute() throws IllegalArgumentException, IllegalAccessException {
-		ICarDao carDao = new CarDaoImpl();
-		Car car;
+	public void execute() {
+		int id = enterId();
 		try {
-			car = enterCar();
-			carDao.delete(carDao.getId(car));
-			System.out.println("Car was deleted from carBase.");
-		} catch (SQLException e) {
+			this.getDao().deleteById(id);
+			System.out.println(
+					String.format("%s with id=%s was deleted from carBase.", this.getDao().getTableName(), id));
+		} catch (SQLException | IllegalArgumentException e) {
 			System.out.println("Something was wrong. Please, try again later.");
 		}
 	}

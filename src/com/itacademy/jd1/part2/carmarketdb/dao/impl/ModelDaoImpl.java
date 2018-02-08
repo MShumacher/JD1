@@ -67,7 +67,7 @@ public class ModelDaoImpl extends AbstractDao<Model> implements IModelDao {
 	}
 
 	@Override
-	protected String getTableName() {
+	public String getTableName() {
 		return "model";
 	}
 

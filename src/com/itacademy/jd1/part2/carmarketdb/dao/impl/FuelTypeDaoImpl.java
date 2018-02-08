@@ -42,7 +42,7 @@ public class FuelTypeDaoImpl extends AbstractDao<FuelType> implements IFuelTypeD
 	}
 
 	@Override
-	protected String getTableName() {
+	public String getTableName() {
 		return "fueltype";
 	}
 

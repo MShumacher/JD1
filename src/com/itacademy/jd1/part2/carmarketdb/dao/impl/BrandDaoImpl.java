@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Set;
 
 import com.itacademy.jd1.part2.carmarketdb.dao.IBrandDao;
 import com.itacademy.jd1.part2.carmarketdb.model.Brand;
@@ -33,7 +34,7 @@ public class BrandDaoImpl extends AbstractDao<Brand> implements IBrandDao {
 	}
 
 	@Override
-	protected String getTableName() {
+	public String getTableName() {
 		return "brand";
 	}
 
