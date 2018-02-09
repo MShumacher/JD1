@@ -42,13 +42,13 @@ public class CEnterAdmin extends Command {
 		ICarDao carDao = new CarDaoImpl();
 		Car car = new Car();
 		add(secondLevelCommands, carDao, car);
-		secondLevelCommands.add(new CommandExit("exit", "For exit to previous menu print"));
+		secondLevelCommands.add(new CommandExit("exit", "To exit to previous menu print"));
 		Menu menu = new Menu(secondLevelCommands);
 		menu.execute();
 	}
 
 	private static void add(List<Command> fLC, IBaseDao dao, Object object) {
 		fLC.add(new CommandDao(dao.getTableName(),
-				String.format("For work with table %s print", dao.getTableName().toUpperCase()), dao, object));
+				String.format("For working with table %s print", dao.getTableName().toUpperCase()), dao, object));
 	}
 }
