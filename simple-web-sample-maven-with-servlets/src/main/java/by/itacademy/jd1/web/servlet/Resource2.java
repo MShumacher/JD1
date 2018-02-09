@@ -12,16 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Resource2 extends HttpServlet {
 
-
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter writer = resp.getWriter();
-		
+		resp.setContentType("text/plain");
 		writer.println("<h1>");
 		writer.println("Hello I'm Resource2");
 		writer.println("</h1>");
 	}
 
-	
 }

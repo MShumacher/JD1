@@ -15,7 +15,14 @@
 		<servlet-name>resource2</servlet-name>
 		<servlet-class>by.itacademy.jd1.web.servlet.Resource2</servlet-class>
 	</servlet>
-
+	<servlet>
+		<servlet-name>resource3</servlet-name>
+		<servlet-class>by.itacademy.jd1.web.servlet.Resource3</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>resource4</servlet-name>
+		<servlet-class>by.itacademy.jd1.web.servlet.Resource4</servlet-class>
+	</servlet>
 	<filter>
 		<filter-name>f1</filter-name> <!-- mandatory -->
 		<filter-class>by.itacademy.jd1.web.filter.Filter1</filter-class> <!-- mandatory -->
@@ -35,14 +42,20 @@
 		<servlet-name>resource2</servlet-name>
 		<url-pattern>/r2</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>resource3</servlet-name>
+		<url-pattern>/r3</url-pattern>
+	</servlet-mapping>
 
-	<filter-mapping>
-		<filter-name>f1</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	<servlet-mapping>
+		<servlet-name>resource4</servlet-name>
+		<url-pattern>/r4</url-pattern>
+	</servlet-mapping>
 	
-	<filter-mapping>
-		<filter-name>f2</filter-name>
-		<url-pattern>/r1</url-pattern>
-	</filter-mapping>
-</web-app>
+	<session-config><!-- время смерти сессии, если к ней не обращались -->
+		<session-timeout>180</session-timeout>
+	</session-config>
+	<!--<filter-mapping> <filter-name>f1</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> <filter-mapping> <filter-name>f2</filter-name> <url-pattern>/r1</url-pattern> 
+		</filter-mapping> -->
+</web-app> 
