@@ -20,7 +20,7 @@ public interface IBaseDao<T> {
 
 	List<String> getDataTypesColumns() throws SQLException;
 
-	void updateByIdByList(int id, List values) throws SQLException;
+	// void updateByIdByList(int id, List values) ;
 
 	void updateById(int id, Object enterObject) throws SQLException, IllegalArgumentException, IllegalAccessException;
 

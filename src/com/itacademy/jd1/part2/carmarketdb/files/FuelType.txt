@@ -1,0 +1,3 @@
+diesel
+gasoline
+propan/gasoline

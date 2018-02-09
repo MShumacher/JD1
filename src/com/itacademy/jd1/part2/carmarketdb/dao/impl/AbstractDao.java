@@ -14,43 +14,39 @@ import com.itacademy.jd1.part2.carmarketdb.dao.IBaseDao;
 public abstract class AbstractDao<T> implements IBaseDao<T> {
 
 	@Override
-	public void updateById(int id, Object object)
-			throws SQLException, IllegalArgumentException, IllegalAccessException {
+	public void updateById(int id, Object object) throws SQLException, IllegalArgumentException, IllegalAccessException {
 		Connection c = getConnection();
 		Statement statement = c.createStatement();
 		List<String> namesColumns = getNamesColumns();
 		Class<?> clazz = object.getClass();
 		Field[] fields = clazz.getDeclaredFields();
-		String query = "update " + getTableName() + " set";
+		StringBuffer query = new StringBuffer("update " + getTableName() + " set");
 
 		for (int i = 1; i < fields.length; i++) {
 			fields[i].setAccessible(true);
-			query += " " + namesColumns.get(i - 1) + "=" + fields[i].get(object) + " ,";
+			query.append(" " + namesColumns.get(i - 1) + "=" + fields[i].get(object) + " ,");
 		}
-		query = query.substring(0, query.length() - 1);
-		query += "where id=" + id;
-		statement.executeUpdate(query);
+		query.deleteCharAt(query.length() - 1).append("where id=" + id);
+		statement.executeUpdate(query.toString());
 		statement.close();
 		c.close();
 	}
 
-	@Override
-	public void updateByIdByList(int id, List values) throws SQLException {
-		Connection c = getConnection();
-
-		Statement statement = c.createStatement();
-		List<String> namesColumns = getNamesColumns();
-		String query = "update " + getTableName() + " set";
-		for (int i = 0; i < values.size(); i++) {
-			query += " " + namesColumns.get(i) + "=" + values.get(i) + " ,";
-		}
-		query = query.substring(0, query.length() - 1);
-		query += "where id=" + id;
-
-		statement.executeUpdate(query);
-		statement.close();
-		c.close();
-	}
+	// @Override
+	// public void updateByIdByList(int id, List values) throws SQLException {
+	// Connection c = getConnection();
+	//
+	// Statement statement = c.createStatement();
+	// List<String> namesColumns = getNamesColumns();
+	// StringBuffer query = new StringBuffer("update " + getTableName() + " set");
+	// for (int i = 0; i < values.size(); i++) {
+	// query.append(" " + namesColumns.get(i) + "=" + values.get(i) + " ,");
+	// }
+	// query.deleteCharAt(query.length() - 1).append("where id=" + id);
+	// statement.executeUpdate(query.toString());
+	// statement.close();
+	// c.close();
+	// }
 
 	@Override
 	public List<String> getNamesColumns() throws SQLException {
@@ -99,7 +95,7 @@ public abstract class AbstractDao<T> implements IBaseDao<T> {
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
-		statement.executeQuery("select * from " + getTableName() + " where id=" + id);
+		statement.executeQuery(String.format("select * from %s where %s=", getTableName(), id));
 
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();

@@ -16,6 +16,18 @@ public class Car {
 		this.price = price;
 	}
 
+	public Car() {
+	}
+
+	public Car(Integer id, Integer fuelTypeId, Integer year, Integer price, Integer modelId) {
+		super();
+		this.id = id;
+		this.fuelTypeId = fuelTypeId;
+		this.year = year;
+		this.price = price;
+		this.modelId = modelId;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -14,12 +14,12 @@ import com.itacademy.jd1.part2.carmarketdb.model.Model;
 public class ModelDaoImpl extends AbstractDao<Model> implements IModelDao {
 
 	@Override
-	public Model getByNameAndBrandId(String name, Integer brandId) throws SQLException {
+	public Model getAllByNameAndBrandId(String name, Integer brandId) throws SQLException {
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
-		statement
-				.executeQuery("select * from " + getTableName() + " where name='" + name + "' and brand_id=" + brandId);
+		statement.executeQuery(
+				String.format("select * from %s where name='%s' and brand_id=%s", getTableName(), name, brandId));
 
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();
@@ -76,7 +76,7 @@ public class ModelDaoImpl extends AbstractDao<Model> implements IModelDao {
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
-		statement.executeQuery("select * from " + getTableName() + " where brand_id=" + brandId);
+		statement.executeQuery(String.format("select * from %s where brand_id=%s", getTableName(), brandId));
 
 		ResultSet resultSet = statement.getResultSet();
 

@@ -11,7 +11,7 @@ public class Menu {
 		this.LevelCommands = LevelCommands;
 	}
 
-	public void execute() throws SQLException, IllegalArgumentException, IllegalAccessException {
+	public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException {
 		String s = "";
 		do {
 			System.out.println("Please, make your choise.");

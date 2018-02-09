@@ -17,7 +17,7 @@ public class BrandDaoImpl extends AbstractDao<Brand> implements IBrandDao {
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
-		statement.executeQuery("select * from " + getTableName() + " where name='" + name + "'");
+		statement.executeQuery(String.format("select * from %s where name='%s'", getTableName(), name));
 
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();

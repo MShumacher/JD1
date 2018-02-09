@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.carmarketdb.command;
+package com.itacademy.jd1.part2.carmarketdb.command.admin;
 
 import java.lang.reflect.Field;
 import java.sql.SQLException;
@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import com.itacademy.jd1.part2.carmarketdb.Command;
 import com.itacademy.jd1.part2.carmarketdb.Menu;
+import com.itacademy.jd1.part2.carmarketdb.command.CommandExit;
 import com.itacademy.jd1.part2.carmarketdb.dao.IBaseDao;
 
 public class CommandDao extends Command {
@@ -30,7 +31,7 @@ public class CommandDao extends Command {
 	}
 
 	@Override
-	public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException {
+	public void execute() throws SQLException, IllegalArgumentException, IllegalAccessException {
 		List<Command> secondLevelCommands = new ArrayList<Command>();
 		String nameTable = this.getValue();
 		secondLevelCommands.add(new CommandView("view", String.format("For viewing all table %s print", nameTable),

@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.carmarketdb.command;
+package com.itacademy.jd1.part2.carmarketdb.command.admin;
 
 import java.sql.SQLException;
 

@@ -12,11 +12,11 @@ import com.itacademy.jd1.part2.carmarketdb.model.FuelType;
 public class FuelTypeDaoImpl extends AbstractDao<FuelType> implements IFuelTypeDao {
 
 	@Override
-	public FuelType getByName(String name) throws SQLException {
+	public FuelType getByName(String name) throws SQLException{
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
-		statement.executeQuery("select * from " + getTableName() + " where name='" + name+"'");
+		statement.executeQuery(String.format("select * from %s where name='%s'", getTableName(), name));
 
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();
@@ -33,7 +33,7 @@ public class FuelTypeDaoImpl extends AbstractDao<FuelType> implements IFuelTypeD
 	}
 
 	@Override
-	protected FuelType handleRow(ResultSet resultSet) throws SQLException {
+	protected FuelType handleRow(ResultSet resultSet) throws SQLException{
 		FuelType fuelType = new FuelType();
 		fuelType.setId(resultSet.getInt("id"));
 		fuelType.setName(resultSet.getString("name"));
@@ -47,7 +47,7 @@ public class FuelTypeDaoImpl extends AbstractDao<FuelType> implements IFuelTypeD
 	}
 
 	@Override
-	public Integer insert(FuelType object) throws SQLException {
+	public Integer insert(FuelType object) throws SQLException{
 		Connection c = getConnection();
 
 		PreparedStatement preparedStatement = c.prepareStatement("insert into fueltype (name) values(?)",

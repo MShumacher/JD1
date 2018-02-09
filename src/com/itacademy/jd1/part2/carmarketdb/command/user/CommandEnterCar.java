@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.carmarketdb.command;
+package com.itacademy.jd1.part2.carmarketdb.command.user;
 
 import java.lang.reflect.Field;
 import java.sql.SQLException;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.itacademy.jd1.part2.carmarketdb.Command;
-import com.itacademy.jd1.part2.carmarketdb.AbstractCar;
+import com.itacademy.jd1.part2.carmarketdb.RequestCar;
 import com.itacademy.jd1.part2.carmarketdb.dao.IBrandDao;
 import com.itacademy.jd1.part2.carmarketdb.dao.IFuelTypeDao;
 import com.itacademy.jd1.part2.carmarketdb.dao.IModelDao;
@@ -22,11 +22,11 @@ public abstract class CommandEnterCar extends Command {
 		super(value, output);
 	}
 
-	protected AbstractCar enterAbstractCar() throws SQLException, IllegalArgumentException, IllegalAccessException {
+	protected RequestCar enterRequestCar() throws SQLException, IllegalArgumentException, IllegalAccessException {
 		IBrandDao brandDao = new BrandDaoImpl();
 		IModelDao modelDao = new ModelDaoImpl();
 		IFuelTypeDao fuelTypeDao = new FuelTypeDaoImpl();
-		AbstractCar abstractCar = new AbstractCar();
+		RequestCar abstractCar = new RequestCar();
 
 		boolean fieldCanBeNull = true;
 		Integer brandId = enterCorrectBrand(brandDao, fieldCanBeNull);
@@ -82,7 +82,10 @@ public abstract class CommandEnterCar extends Command {
 	private int enterCorrectPrice(boolean fieldCanBeNull) {
 		int price = 0;
 		Scanner scan = new Scanner(System.in);
-		System.out.println(String.format("Please enter correct price."));
+		System.out.println("Please enter correct price.");
+		if (fieldCanBeNull) {
+			System.out.println("If you want a car of any price, type 0");
+		}
 		try {
 			price = scan.nextInt();
 		} catch (InputMismatchException e) {
@@ -100,7 +103,10 @@ public abstract class CommandEnterCar extends Command {
 	private int enterCorrectYear(boolean fieldCanBeNull) {
 		int year = 0;
 		Scanner scan = new Scanner(System.in);
-		System.out.println(String.format("Please enter correct year (1900-2018)."));
+		System.out.println("Please enter correct year (1900-2018).");
+		if (fieldCanBeNull) {
+			System.out.println("If you want a car of any year, type 0");
+		}
 		try {
 			year = scan.nextInt();
 		} catch (InputMismatchException e) {
@@ -120,9 +126,12 @@ public abstract class CommandEnterCar extends Command {
 		String fuelType = "";
 		Integer fuelTypeId = null;
 		Scanner scan = new Scanner(System.in);
-		System.out.println(String.format("Please enter correct fuelType."));
+		System.out.println("Please enter correct fuelType.");
 		System.out.println("All available fuelType:");
 		printNames(fuelTypeDao.getAll());
+		if (fieldCanBeNull) {
+			System.out.println("If you want a car of any fueltype, type 0");
+		}
 		fuelType = scan.nextLine();
 		if ((fieldCanBeNull) && (fuelType.equals("0"))) {
 			return 0;
@@ -141,22 +150,25 @@ public abstract class CommandEnterCar extends Command {
 		String model = "";
 		Integer modelId = null;
 		Scanner scan = new Scanner(System.in);
-		System.out.println(String.format("Please enter correct model."));
+		System.out.println("Please enter correct model.");
 		System.out.println("All available model:");
 		if (brandId == 0) {
 			System.out.println("0");
 		} else {
 			printNames(modelDao.getAllByBrandId(brandId));
 		}
+		if (fieldCanBeNull) {
+			System.out.println("If you want a car of any model, type 0");
+		}
 		model = scan.nextLine();
 		if ((fieldCanBeNull) && (model.equals("0"))) {
 			return 0;
 		}
-		if (modelDao.getByNameAndBrandId(model, brandId) == null) {
+		if (modelDao.getAllByNameAndBrandId(model, brandId) == null) {
 			System.out.println("Model is incorrect (If you sure your %s is correct, please, inform us)");
 			return enterCorrectModel(modelDao, brandId, fieldCanBeNull);
 		} else {
-			modelId = modelDao.getByNameAndBrandId(model, brandId).getId();
+			modelId = modelDao.getAllByNameAndBrandId(model, brandId).getId();
 		}
 		return modelId;
 	}
@@ -166,9 +178,12 @@ public abstract class CommandEnterCar extends Command {
 		String brand = "";
 		Integer brandId = null;
 		Scanner scan = new Scanner(System.in);
-		System.out.println(String.format("Please enter correct brand."));
+		System.out.println("Please enter correct brand.");
 		System.out.println("All available brands:");
 		printNames(brandDao.getAll());
+		if (fieldCanBeNull) {
+			System.out.println("If you want a car of any brand, type 0");
+		}
 		brand = scan.nextLine();
 		if ((fieldCanBeNull) && (brand.equals("0"))) {
 			return 0;

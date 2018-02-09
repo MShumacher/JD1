@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.carmarketdb.command;
+package com.itacademy.jd1.part2.carmarketdb.command.admin;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,7 +12,7 @@ public class CommandView extends CommandDao {
 	}
 
 	@Override
-	public void execute() throws SQLException, IllegalArgumentException, IllegalAccessException {
+	public void execute() throws SQLException {
 		printList(this.getDao().getAll());
 	}
 

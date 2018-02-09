@@ -21,10 +21,9 @@ import com.itacademy.jd1.part2.carmarketdb.model.Car;
 import com.itacademy.jd1.part2.carmarketdb.model.FuelType;
 import com.itacademy.jd1.part2.carmarketdb.model.Model;
 
-public class DaoTest {
+public class FillBaseFromFiles {
 
-	public static void main(String[] args) throws SQLException, IOException, NoSuchFieldException, SecurityException,
-			IllegalArgumentException, IllegalAccessException {
+	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, SQLException {
 		IBrandDao brandDao = new BrandDaoImpl();
 		IModelDao modelDao = new ModelDaoImpl();
 		ICarDao carDao = new CarDaoImpl();
@@ -33,10 +32,8 @@ public class DaoTest {
 		// fillBrandFromFile(brandDao);
 		// fillFuelTypeFromFile(fuelTypeDao);
 		// fillModelFromFiles(modelDao);
-
 		// fillRandomCars(carDao, 100);
 
-		// System.out.println("latest generated brand id:" + generatedId);
 		// printList(brandDao.getAll());
 		// printList(modelDao.getAll());
 		// printList(fuelTypeDao.getAll());
@@ -55,12 +52,12 @@ public class DaoTest {
 			int fuelTypeId = 1 + (int) (Math.random() * 3);
 			object.setFuelTypeId(fuelTypeId);
 			Integer generatedId = carDao.insert(object);
-			System.out.println("Car " + i + " was added to base.");
+			System.out.println(String.format("Car %s was added to base.", i));
 		}
 	}
 
 	private static void fillFuelTypeFromFile(IFuelTypeDao fuelTypeDao) throws SQLException, IOException {
-		String filePath = "F:\\Work\\Учеба\\it-academy\\JD1\\src\\com\\itacademy\\jd1\\part2\\carmarket\\base\\FuelType.txt";
+		String filePath = "F:\\Work\\Учеба\\it-academy\\JD1\\src\\com\\itacademy\\jd1\\part2\\carmarketdb\\files\\FuelType.txt";
 		new File(filePath).createNewFile();
 		List<String> values = Files.readAllLines(Paths.get(filePath));
 		for (String value : values) {
@@ -68,12 +65,11 @@ public class DaoTest {
 			object.setName(value);
 			Integer generatedId = fuelTypeDao.insert(object);
 		}
-
 	}
 
-	private static void fillModelFromFiles(IModelDao modelDao) throws IOException, SQLException {
+	private static void fillModelFromFiles(IModelDao modelDao) throws SQLException, IOException {
 		File pathDir = null;
-		String filePath = "F:\\Work\\Учеба\\it-academy\\JD1\\src\\com\\itacademy\\jd1\\part2\\carmarket\\base\\models\\";
+		String filePath = "F:\\Work\\Учеба\\it-academy\\JD1\\src\\com\\itacademy\\jd1\\part2\\carmarketdb\\files\\models\\";
 		String[] pathsFilesAndDir;
 		pathDir = new File(filePath);
 		pathsFilesAndDir = pathDir.list();
@@ -92,7 +88,7 @@ public class DaoTest {
 	}
 
 	private static void fillBrandFromFile(IBrandDao brandDao) throws IOException, SQLException {
-		String filePath = "F:\\Work\\Учеба\\it-academy\\JD1\\src\\com\\itacademy\\jd1\\part2\\carmarket\\base\\Brand.txt";
+		String filePath = "F:\\Work\\Учеба\\it-academy\\JD1\\src\\com\\itacademy\\jd1\\part2\\carmarketdb\\files\\Brand.txt";
 		new File(filePath).createNewFile();
 		List<String> values = Files.readAllLines(Paths.get(filePath));
 		for (String value : values) {
@@ -102,18 +98,15 @@ public class DaoTest {
 		}
 	}
 
-	private static void printList(List<? extends Object> all)
-			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+	private static void printList(List<? extends Object> all) throws IllegalArgumentException, IllegalAccessException {
 		for (Object object : all) {
 			Class<?> c = object.getClass();
 			Field[] fields = c.getDeclaredFields();
 			System.out.println();
-
-			// System.out.println(c.getField("").get(object));
 			for (Field field : fields) {
 				field.setAccessible(true);
 				if (field.getName().equals("modelId")) {
-					System.out.println(field.getName() + "=" + field.get(object));
+					System.out.print(String.format("%s=%s ||", field.getName(), field.get(object)));
 				}
 			}
 			System.out.println(object.toString());

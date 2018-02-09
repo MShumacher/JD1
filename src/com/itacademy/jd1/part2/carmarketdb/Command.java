@@ -20,5 +20,5 @@ public abstract class Command {
 		return value;
 	}
 
-	abstract public void execute() throws SQLException, IllegalArgumentException, IllegalAccessException;
+	abstract public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException;
 }

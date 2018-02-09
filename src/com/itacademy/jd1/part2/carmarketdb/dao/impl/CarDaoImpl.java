@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.itacademy.jd1.part2.carmarketdb.AbstractCar;
+import com.itacademy.jd1.part2.carmarketdb.RequestCar;
 import com.itacademy.jd1.part2.carmarketdb.dao.ICarDao;
 import com.itacademy.jd1.part2.carmarketdb.model.Car;
 
@@ -22,14 +22,13 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 		List<String> namesColumns = getNamesColumns();
 		Class<?> clazz = car.getClass();
 		Field[] fields = clazz.getDeclaredFields();
-		String query = "delete from " + getTableName() + " where";
+		StringBuilder query = new StringBuilder("delete from " + getTableName() + " where");
 
 		for (int i = 1; i < fields.length; i++) {
 			fields[i].setAccessible(true);
-			query += " " + namesColumns.get(i - 1) + "=" + fields[i].get(car) + " and";
+			query.append(" " + namesColumns.get(i - 1) + "=" + fields[i].get(car) + " and");
 		}
-		query = query.substring(0, query.length() - 3);
-		statement.executeUpdate(query);
+		statement.executeUpdate(query.substring(0, query.length() - 3).toString());
 		statement.close();
 		c.close();
 	}
@@ -100,34 +99,33 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 	}
 
 	@Override
-	public void findAndPrint(AbstractCar abstractCar)
-			throws SQLException, IllegalArgumentException, IllegalAccessException {
+	public void findAndPrint(RequestCar abstractCar) throws SQLException {
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
-		// where
-		String query = "select b.name,m.name,f.name,c.year,c.price from car c join model m on (c.model_id=m.id)join brand b on (m.brand_id=b.id)join fueltype f on(c.fueltype_id=f.id) where ";
+		StringBuilder query = new StringBuilder(
+				"select b.name, m.name, f.name, c.year, c.price from car c join model m on (c.model_id=m.id) join brand b on (m.brand_id=b.id) join fueltype f on (c.fueltype_id=f.id) where ");
 		if (abstractCar.getBrandId() != 0) {
-			query += "m.brand_id =" + abstractCar.getBrandId() + " and ";
+			query.append("m.brand_id =" + abstractCar.getBrandId() + " and ");
 		}
 		if (abstractCar.getModelId() != 0) {
-			query += "c.model_id =" + abstractCar.getModelId() + " and ";
+			query.append("c.model_id =" + abstractCar.getModelId() + " and ");
 		}
 		if (abstractCar.getFuelTypeId() != 0) {
-			query += "c.fueltype_id =" + abstractCar.getFuelTypeId() + " and ";
+			query.append("c.fueltype_id =" + abstractCar.getFuelTypeId() + " and ");
 		}
 		if (abstractCar.getMaxPrice() != 0) {
-			query += " c.price between " + abstractCar.getPrice() + " and " + abstractCar.getMaxPrice() + " and ";
+			query.append("c.price between " + abstractCar.getPrice() + " and " + abstractCar.getMaxPrice() + " and ");
 		} else {
-			query += " c.price>=" + abstractCar.getPrice() + " and ";
+			query.append("c.price>=" + abstractCar.getPrice() + " and ");
 		}
 		if (abstractCar.getMaxYear() != 0) {
-			query += " c.year between " + abstractCar.getYear() + " and " + abstractCar.getMaxYear();
+			query.append("c.year between " + abstractCar.getYear() + " and " + abstractCar.getMaxYear());
 		} else {
-			query += " c.year>=" + abstractCar.getYear();
+			query.append("c.year>=" + abstractCar.getYear());
 		}
-		System.out.println(query);
-		statement.executeQuery(query);
+		// System.out.println(query);
+		statement.executeQuery(query.toString());
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();
 		while (hasNext) {
@@ -139,5 +137,4 @@ public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
 		statement.close();
 		c.close();
 	}
-
 }
