@@ -22,8 +22,10 @@ public class Filter2 implements Filter {
 		writer.println("Filter2 was here");
 		writer.println("</h1>");
 
-		chain.doFilter(request, response);
-
+		System.out.println("before servlet execution Filter2");//выполняется до сервлета
+		chain.doFilter(request, response);//вызвать следующий фильтр или сервлет в цепочке, можно не писать и реквест возвращается обратно
+//а куда идти дальше,на фильтр или сервлет. пишем в маппинге
+		System.out.println("after servlet execution Filter2");//эта строчка выполняется после сервлета
 	}
 
 	public void destroy() {
