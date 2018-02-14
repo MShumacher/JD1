@@ -7,8 +7,8 @@ import java.util.ResourceBundle;
 
 import com.itacademy.jd1.part2.excel.commands.CommandChangeLanguage;
 import com.itacademy.jd1.part2.excel.commands.CommandExit;
-import com.itacademy.jd1.part2.excel.commands.forfile.CommandNew;
-import com.itacademy.jd1.part2.excel.commands.forfile.CommandOpen;
+import com.itacademy.jd1.part2.excel.commands.file.CommandNew;
+import com.itacademy.jd1.part2.excel.commands.file.CommandOpen;
 
 public class Main {
 

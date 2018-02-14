@@ -5,8 +5,8 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Menu {
-	List<Command> LevelCommands;
-	ResourceBundle rb;
+	private List<Command> LevelCommands;
+	private ResourceBundle rb;
 
 	public Menu(List<Command> LevelCommands, ResourceBundle rb) {
 		this.LevelCommands = LevelCommands;

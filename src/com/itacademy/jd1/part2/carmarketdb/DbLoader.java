@@ -21,7 +21,7 @@ import com.itacademy.jd1.part2.carmarketdb.model.Car;
 import com.itacademy.jd1.part2.carmarketdb.model.FuelType;
 import com.itacademy.jd1.part2.carmarketdb.model.Model;
 
-public class FillBaseFromFiles {
+public class DbLoader {
 
 	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, SQLException {
 		IBrandDao brandDao = new BrandDaoImpl();

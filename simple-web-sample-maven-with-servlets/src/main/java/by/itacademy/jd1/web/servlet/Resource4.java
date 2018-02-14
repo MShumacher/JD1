@@ -14,21 +14,18 @@ public class Resource4 extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String cookieName = "testCookie";
-		String cookieName2 = "testCookie2";
 		String cookieValue = "";
 		String cookieComment = "";
 		Cookie[] myCookies = req.getCookies();
 		if (myCookies != null) {
-			for (
-					int i = 0; i < myCookies.length; i++) {
+			for (int i = 0; i < myCookies.length; i++) {
 				Cookie cookie = myCookies[i];
-				if (cookieName.equals(cookie.getName())) {
+				resp.getWriter().println(cookie.toString());
+		//		if (cookieName.equals(cookie.getName())) {
 					cookieValue = cookie.getValue();
-				}
-				if (cookieName2.equals(cookie.getName())) {
-					cookieComment = cookie.getValue();
-					break;
-				}
+					cookieComment=cookie.getComment();
+					resp.getWriter().println("I got the cookie: " + cookieValue + " " + cookieComment);
+		//		}
 			}
 		}
 		resp.getWriter().println("I got the cookie: " + cookieValue + " " + cookieComment);

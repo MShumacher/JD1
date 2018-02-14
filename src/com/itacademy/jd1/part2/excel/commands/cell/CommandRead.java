@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.excel.commands.forcell;
+package com.itacademy.jd1.part2.excel.commands.cell;
 
 import java.util.NoSuchElementException;
 import java.util.ResourceBundle;

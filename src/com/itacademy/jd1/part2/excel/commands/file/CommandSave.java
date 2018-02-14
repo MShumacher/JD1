@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.excel.commands.forfile;
+package com.itacademy.jd1.part2.excel.commands.file;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

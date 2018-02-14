@@ -19,18 +19,18 @@ public class Cell implements Serializable {
 			return value;
 		} else {
 			System.out.println(value);
-			return conversion(value.substring(1));
+			return doConversion(value.substring(1));
 		}
 	}
 
 	public void setValue(String value) throws NoSuchElementException, NumberFormatException {
 		if (value.charAt(0) == '=') {
-			conversion(value.substring(1));
+			doConversion(value.substring(1));
 		}
 		this.value = value;
 	}
 
-	private String conversion(String value) throws NoSuchElementException, NumberFormatException {
+	private String doConversion(String value) throws NoSuchElementException, NumberFormatException {
 		// замена данных типа [1,A] на их значения
 		Pattern p = Pattern.compile("\\[([1-9][0-9]{0,2}|1000),[A-Z]\\]");
 		Matcher matcher = p.matcher(value);
@@ -43,8 +43,7 @@ public class Cell implements Serializable {
 				&& ((value.indexOf('(') != -1) && ((value.indexOf(')') != -1)))) {
 			value = val(value);
 		}
-		PPN ppn = new PPN();
-		return Integer.toString(ppn.eval(value));
+		return Integer.toString(PPN.eval(value));
 	}
 
 	private String val(String s) throws NoSuchElementException, NumberFormatException {

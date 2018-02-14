@@ -16,6 +16,7 @@ public class CommandInsert extends CommandDao {
 			Integer generatedId = this.getDao().insert(enterObject(this.getObject()));
 			System.out.println(this.getDao().getTableName() + " was added in table.");
 		} catch (IllegalArgumentException | SQLException e) {
+			System.out.println(e.getMessage());
 			System.out.println("Something was wrong. Please, try again later.");
 		}
 	}

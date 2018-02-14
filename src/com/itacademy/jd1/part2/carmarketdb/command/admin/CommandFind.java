@@ -16,6 +16,7 @@ public class CommandFind extends CommandDao {
 		try {
 			System.out.println(this.getDao().getById(id));
 		} catch (SQLException | IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 			System.out.println("Something was wrong. Please, try again later.");
 		}
 	}

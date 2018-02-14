@@ -47,7 +47,7 @@ public class CEnterAdmin extends Command {
 		menu.execute();
 	}
 
-	private static void add(List<Command> fLC, IBaseDao dao, Object object) {
+	private void add(List<Command> fLC, IBaseDao dao, Object object) {
 		fLC.add(new CommandDao(dao.getTableName(),
 				String.format("For working with table %s print", dao.getTableName().toUpperCase()), dao, object));
 	}

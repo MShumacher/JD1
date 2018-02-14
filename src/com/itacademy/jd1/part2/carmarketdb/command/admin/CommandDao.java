@@ -73,7 +73,7 @@ public class CommandDao extends Command {
 		return object;
 	}
 
-	private static void enterField(Object object, Field field) {
+	private void enterField(Object object, Field field) {
 		System.out.println("Print " + field.getName().toString());
 		Scanner scan = new Scanner(System.in);
 		field.setAccessible(true);

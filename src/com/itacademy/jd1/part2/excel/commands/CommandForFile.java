@@ -9,9 +9,9 @@ import com.itacademy.jd1.part2.excel.Command;
 import com.itacademy.jd1.part2.excel.Main;
 import com.itacademy.jd1.part2.excel.Menu;
 import com.itacademy.jd1.part2.excel.Sheet;
-import com.itacademy.jd1.part2.excel.commands.forcell.CommandEdit;
-import com.itacademy.jd1.part2.excel.commands.forcell.CommandRead;
-import com.itacademy.jd1.part2.excel.commands.forfile.CommandSave;
+import com.itacademy.jd1.part2.excel.commands.cell.CommandEdit;
+import com.itacademy.jd1.part2.excel.commands.cell.CommandRead;
+import com.itacademy.jd1.part2.excel.commands.file.CommandSave;
 
 public abstract class CommandForFile extends Command {
 	ResourceBundle rb;

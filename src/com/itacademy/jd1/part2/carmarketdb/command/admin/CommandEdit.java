@@ -17,6 +17,7 @@ public class CommandEdit extends CommandDao {
 			this.getDao().updateById(id, enterObject(this.getObject()));
 			System.out.println(String.format("%s with id=%s was updated.", this.getDao().getTableName(), id));
 		} catch (SQLException | IllegalAccessException e) {
+			System.out.println(e.getMessage());
 			System.out.println("Something was wrong. Please, try again later.");
 		}
 	}

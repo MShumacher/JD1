@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-	List<Command> LevelCommands;
+	private List<Command> LevelCommands;
 
 	public Menu(List<Command> LevelCommands) {
 		this.LevelCommands = LevelCommands;

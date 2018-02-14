@@ -18,6 +18,7 @@ public class CommandDelete extends CommandDao {
 			System.out.println(
 					String.format("%s with id=%s was deleted from carBase.", this.getDao().getTableName(), id));
 		} catch (SQLException | IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 			System.out.println("Something was wrong. Please, try again later.");
 		}
 	}
