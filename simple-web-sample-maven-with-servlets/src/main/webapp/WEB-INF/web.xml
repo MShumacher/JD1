@@ -58,7 +58,7 @@
 	</servlet-mapping>
 		<filter-mapping>
 		<filter-name>AuthorizationFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/r1</url-pattern>
 	</filter-mapping>
 	<session-config><!-- время смерти сессии, если к ней не обращались -->
 		<session-timeout>180</session-timeout>
