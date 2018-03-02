@@ -30,16 +30,16 @@ public class CEnterAdmin extends Command {
 
 	public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException {
 		List<Command> secondLevelCommands = new ArrayList<Command>();
-		IBrandDao brandDao = new BrandDaoImpl();
+		IBrandDao brandDao = BrandDaoImpl.INSTANCE;
 		Brand brand = new Brand();
 		add(secondLevelCommands, brandDao, brand);
-		IModelDao modelDao = new ModelDaoImpl();
+		IModelDao modelDao = ModelDaoImpl.INSTANCE;
 		Model model = new Model();
 		add(secondLevelCommands, modelDao, model);
-		IFuelTypeDao fuelTypeDao = new FuelTypeDaoImpl();
+		IFuelTypeDao fuelTypeDao = FuelTypeDaoImpl.INSTANCE;
 		FuelType fuelType = new FuelType();
 		add(secondLevelCommands, fuelTypeDao, fuelType);
-		ICarDao carDao = new CarDaoImpl();
+		ICarDao carDao = CarDaoImpl.INSTANCE;
 		Car car = new Car();
 		add(secondLevelCommands, carDao, car);
 		secondLevelCommands.add(new CommandExit("exit", "To exit to previous menu print"));

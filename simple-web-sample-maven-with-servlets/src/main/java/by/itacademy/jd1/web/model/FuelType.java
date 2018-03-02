@@ -1,9 +1,10 @@
 package by.itacademy.jd1.web.model;
 
-public class Model {
+public class FuelType {
+
 	private Integer id;
+
 	private String name;
-	private Integer brandId;
 
 	public Integer getId() {
 		return id;
@@ -11,14 +12,6 @@ public class Model {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getBrandId() {
-		return brandId;
-	}
-
-	public void setBrandId(Integer brandId) {
-		this.brandId = brandId;
 	}
 
 	public String getName() {
@@ -31,7 +24,7 @@ public class Model {
 
 	@Override
 	public String toString() {
-		return "Model [id=" + id + ", brandId=" + brandId + ", name=" + name + "]";
+		return "FuelType [id=" + id + ", name=" + name + "]";
 	}
 
 }

@@ -3,7 +3,7 @@
 <%@ page import="by.itacademy.jd1.web.model.Model"%>
 <%@ page import="java.util.List"%>
 
-<jsp:include page="menu.jsp" />
+<jsp:include page="index.html" />
 <h1>Models page</h1>
 
 <%
@@ -15,7 +15,8 @@
 	<c:forEach items="${modelsList}" var="model">
 		<tr>
 			<td><c:out value="${model.id}" /></td>
-			<td><c:out value="${model.modelId}" /></td>
+			<td><c:out value="${model.name}" /></td>
+			<td><c:out value="${model.brandId}" /></td>
 		</tr>
 	</c:forEach>
 </table>

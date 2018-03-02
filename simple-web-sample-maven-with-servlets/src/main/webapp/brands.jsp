@@ -3,7 +3,7 @@
 <%@ page import="by.itacademy.jd1.web.model.Brand"%>
 <%@ page import="java.util.List"%>
 
-<jsp:include page="menu.jsp" />
+<jsp:include page="index.html" />
 <h1>Brands page</h1>
 
 <%

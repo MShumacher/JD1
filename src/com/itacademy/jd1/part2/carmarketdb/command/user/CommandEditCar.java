@@ -16,7 +16,7 @@ public class CommandEditCar extends CommandEnterCar {
 	public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException {
 		System.out.println("Enter car you want to edit.");
 		Car car = enterCar();
-		ICarDao carDao = new CarDaoImpl();
+		ICarDao carDao = CarDaoImpl.INSTANCE;
 		carDao.updateById(carDao.getId(car), car);
 		System.out.println("Car was updated in base.");
 	}

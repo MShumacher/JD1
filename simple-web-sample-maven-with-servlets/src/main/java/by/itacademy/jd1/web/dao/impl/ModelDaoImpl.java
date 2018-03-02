@@ -5,17 +5,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import by.itacademy.jd1.web.dao.IBrandDao;
 import by.itacademy.jd1.web.dao.IModelDao;
 import by.itacademy.jd1.web.model.Model;
 
 public class ModelDaoImpl extends AbstractDao<Model> implements IModelDao {
+	
 	public static final IModelDao INSTANCE = new ModelDaoImpl();
 
 	private ModelDaoImpl() {
 		super();
 	}
+	
+	@Override
+	public Model getAllByNameAndBrandId(String name, Integer brandId) throws SQLException {
+		Connection c = getConnection();
+
+		Statement statement = c.createStatement();
+		statement.executeQuery(
+				String.format("select * from %s where name='%s' and brand_id=%s", getTableName(), name, brandId));
+
+		ResultSet resultSet = statement.getResultSet();
+		boolean hasNext = resultSet.next();
+		Model result = null;
+		if (hasNext) {
+			result = handleRow(resultSet);
+		}
+
+		resultSet.close();
+		statement.close();
+		c.close();
+
+		return result;
+	}
+
 	@Override
 	protected Model handleRow(ResultSet resultSet) throws SQLException {
 		Model model = new Model();
@@ -48,8 +73,31 @@ public class ModelDaoImpl extends AbstractDao<Model> implements IModelDao {
 	}
 
 	@Override
-	protected String getTableName() {
+	public String getTableName() {
 		return "model";
+	}
+
+	@Override
+	public List<? extends Object> getAllByBrandId(Integer brandId) throws SQLException {
+		Connection c = getConnection();
+
+		Statement statement = c.createStatement();
+		statement.executeQuery(String.format("select * from %s where brand_id=%s", getTableName(), brandId));
+
+		ResultSet resultSet = statement.getResultSet();
+
+		List<Model> result = new ArrayList<>();
+		boolean hasNext = resultSet.next();
+		while (hasNext) {
+			result.add(handleRow(resultSet));
+			hasNext = resultSet.next();
+		}
+
+		resultSet.close();
+		statement.close();
+		c.close();
+
+		return result;
 	}
 
 }

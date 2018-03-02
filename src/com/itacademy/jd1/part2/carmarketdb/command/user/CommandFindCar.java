@@ -15,7 +15,7 @@ public class CommandFindCar extends CommandEnterCar {
 	@Override
 	public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException {
 		System.out.println("Enter a query to search.");
-		ICarDao carDao = new CarDaoImpl();
+		ICarDao carDao = CarDaoImpl.INSTANCE;
 		RequestCar requestCar = enterRequestCar();
 		carDao.findAndPrint(requestCar);
 	}

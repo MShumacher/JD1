@@ -3,9 +3,30 @@ package by.itacademy.jd1.web.model;
 public class Car {
 
 	private Integer id;
-	private Integer modelId;
-	private String fuelType;
+	private Integer fuelTypeId;
 	private Integer year;
+	private Integer price;
+	private Integer modelId;
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public Car() {
+	}
+
+	public Car(Integer id, Integer fuelTypeId, Integer year, Integer price, Integer modelId) {
+		super();
+		this.id = id;
+		this.fuelTypeId = fuelTypeId;
+		this.year = year;
+		this.price = price;
+		this.modelId = modelId;
+	}
 
 	public Integer getId() {
 		return id;
@@ -15,12 +36,12 @@ public class Car {
 		this.id = id;
 	}
 
-	public String getFuelType() {
-		return fuelType;
+	public Integer getFuelTypeId() {
+		return fuelTypeId;
 	}
 
-	public void setFuelType(String fuelType) {
-		this.fuelType = fuelType;
+	public void setFuelTypeId(Integer fuelTypeId) {
+		this.fuelTypeId = fuelTypeId;
 	}
 
 	public Integer getYear() {
@@ -41,7 +62,7 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", modelId=" + modelId + ", fuelType=" + fuelType + ", year=" + year + "]";
+		return "Car [id=" + id + ", modelId=" + modelId + ", fuelTypeId=" + fuelTypeId + ", year=" + year + ", price="
+				+ price + "]";
 	}
-
 }

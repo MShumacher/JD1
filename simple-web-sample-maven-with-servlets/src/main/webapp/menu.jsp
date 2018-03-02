@@ -1,1 +1,1 @@
-<a href="brands.jsp">brands</a>|<a href="models.jsp">models</a>|<a href="cars.jsp">cars</a>
+<a href="brands.jsp">brands</a>|<a href="models.jsp">models</a>|<a href="fueltype.jsp">fuelTypes</a>|<a href="cars.jsp">cars</a>

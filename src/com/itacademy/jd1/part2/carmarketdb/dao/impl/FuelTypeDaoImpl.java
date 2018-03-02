@@ -10,7 +10,13 @@ import com.itacademy.jd1.part2.carmarketdb.dao.IFuelTypeDao;
 import com.itacademy.jd1.part2.carmarketdb.model.FuelType;
 
 public class FuelTypeDaoImpl extends AbstractDao<FuelType> implements IFuelTypeDao {
+	
+	public static final IFuelTypeDao INSTANCE = new FuelTypeDaoImpl();
 
+	private FuelTypeDaoImpl() {
+		super();
+	}
+	
 	@Override
 	public FuelType getByName(String name) throws SQLException{
 		Connection c = getConnection();

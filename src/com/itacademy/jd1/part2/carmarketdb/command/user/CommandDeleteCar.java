@@ -16,7 +16,7 @@ public class CommandDeleteCar extends CommandEnterCar {
 	public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException {
 		System.out.println("Enter car you want to delete.");
 		Car car = enterCar();
-		ICarDao carDao = new CarDaoImpl();
+		ICarDao carDao = CarDaoImpl.INSTANCE;
 		carDao.delete(car);
 		System.out.println("Car was deleted from base.");
 	}

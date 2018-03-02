@@ -1,4 +1,4 @@
-package com.itacademy.jd1.part2.carmarketdb.dao.impl;
+package by.itacademy.jd1.web.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.itacademy.jd1.part2.carmarketdb.dao.IBrandDao;
-import com.itacademy.jd1.part2.carmarketdb.model.Brand;
+import by.itacademy.jd1.web.dao.IFuelTypeDao;
+import by.itacademy.jd1.web.model.FuelType;
 
-public class BrandDaoImpl extends AbstractDao<Brand> implements IBrandDao {
+public class FuelTypeDaoImpl extends AbstractDao<FuelType> implements IFuelTypeDao {
 	
-	public static final IBrandDao INSTANCE = new BrandDaoImpl();
+	public static final IFuelTypeDao INSTANCE = new FuelTypeDaoImpl();
 
-	private BrandDaoImpl() {
+	private FuelTypeDaoImpl() {
 		super();
 	}
 	
 	@Override
-	public Brand getByName(String name) throws SQLException {
+	public FuelType getByName(String name) throws SQLException{
 		Connection c = getConnection();
 
 		Statement statement = c.createStatement();
@@ -26,7 +26,7 @@ public class BrandDaoImpl extends AbstractDao<Brand> implements IBrandDao {
 
 		ResultSet resultSet = statement.getResultSet();
 		boolean hasNext = resultSet.next();
-		Brand result = null;
+		FuelType result = null;
 		if (hasNext) {
 			result = handleRow(resultSet);
 		}
@@ -39,23 +39,24 @@ public class BrandDaoImpl extends AbstractDao<Brand> implements IBrandDao {
 	}
 
 	@Override
+	protected FuelType handleRow(ResultSet resultSet) throws SQLException{
+		FuelType fuelType = new FuelType();
+		fuelType.setId(resultSet.getInt("id"));
+		fuelType.setName(resultSet.getString("name"));
+		return fuelType;
+
+	}
+
+	@Override
 	public String getTableName() {
-		return "brand";
+		return "fueltype";
 	}
 
 	@Override
-	protected Brand handleRow(ResultSet resultSet) throws SQLException {
-		Brand object = new Brand();
-		object.setId(resultSet.getInt("id"));
-		object.setName(resultSet.getString("name"));
-		return object;
-	}
-
-	@Override
-	public Integer insert(Brand object) throws SQLException {
+	public Integer insert(FuelType object) throws SQLException{
 		Connection c = getConnection();
 
-		PreparedStatement preparedStatement = c.prepareStatement("insert into brand (name) values(?)",
+		PreparedStatement preparedStatement = c.prepareStatement("insert into fueltype (name) values(?)",
 				Statement.RETURN_GENERATED_KEYS);
 		preparedStatement.setString(1, object.getName());
 

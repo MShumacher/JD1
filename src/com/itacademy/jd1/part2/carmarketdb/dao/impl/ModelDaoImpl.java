@@ -12,7 +12,13 @@ import com.itacademy.jd1.part2.carmarketdb.dao.IModelDao;
 import com.itacademy.jd1.part2.carmarketdb.model.Model;
 
 public class ModelDaoImpl extends AbstractDao<Model> implements IModelDao {
+	
+	public static final IModelDao INSTANCE = new ModelDaoImpl();
 
+	private ModelDaoImpl() {
+		super();
+	}
+	
 	@Override
 	public Model getAllByNameAndBrandId(String name, Integer brandId) throws SQLException {
 		Connection c = getConnection();

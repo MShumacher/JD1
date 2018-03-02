@@ -11,6 +11,16 @@ public interface IBaseDao<T> {
 
 	T getById(Integer id) throws SQLException;
 
-	void delete(Integer id) throws SQLException;
+	void deleteById(Integer id) throws SQLException;
+
+	abstract String getTableName();
+
+	List<String> getNamesColumns() throws SQLException;
+
+	List<String> getDataTypesColumns() throws SQLException;
+
+	// void updateByIdByList(int id, List values) ;
+
+	void updateById(int id, Object enterObject) throws SQLException, IllegalArgumentException, IllegalAccessException;
 
 }

@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.itacademy.jd1.part2.carmarketdb.RequestCar;
@@ -14,7 +13,13 @@ import com.itacademy.jd1.part2.carmarketdb.dao.ICarDao;
 import com.itacademy.jd1.part2.carmarketdb.model.Car;
 
 public class CarDaoImpl extends AbstractDao<Car> implements ICarDao {
+	
+	public static final ICarDao INSTANCE = new CarDaoImpl();
 
+	private CarDaoImpl() {
+		super();
+	}
+	
 	public void delete(Car car) throws SQLException, IllegalArgumentException, IllegalAccessException {
 		Connection c = getConnection();
 		Statement statement = c.createStatement();

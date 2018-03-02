@@ -14,7 +14,7 @@ public class CommandViewBase extends CommandEnterCar {
 
 	@Override
 	public void execute() throws IllegalArgumentException, IllegalAccessException, SQLException {
-		ICarDao carDao = new CarDaoImpl();
+		ICarDao carDao = CarDaoImpl.INSTANCE;
 		RequestCar requestCar = new RequestCar(0, 0, 0, 0, 0, 0, 0, 0);
 		carDao.findAndPrint(requestCar);
 	}

@@ -16,7 +16,7 @@ public class CommandAddCar extends CommandEnterCar {
 	public void execute() throws SQLException, IllegalArgumentException, IllegalAccessException {
 		System.out.println("Enter new car.");
 		Car car = enterCar();
-		ICarDao carDao = new CarDaoImpl();
+		ICarDao carDao = CarDaoImpl.INSTANCE;
 		carDao.insert(car);
 		System.out.println("Car was added in base.");
 	}

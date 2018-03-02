@@ -12,6 +12,7 @@ import com.itacademy.jd1.part2.carmarketdb.dao.IBrandDao;
 import com.itacademy.jd1.part2.carmarketdb.dao.IFuelTypeDao;
 import com.itacademy.jd1.part2.carmarketdb.dao.IModelDao;
 import com.itacademy.jd1.part2.carmarketdb.dao.impl.BrandDaoImpl;
+import com.itacademy.jd1.part2.carmarketdb.dao.impl.CarDaoImpl;
 import com.itacademy.jd1.part2.carmarketdb.dao.impl.FuelTypeDaoImpl;
 import com.itacademy.jd1.part2.carmarketdb.dao.impl.ModelDaoImpl;
 import com.itacademy.jd1.part2.carmarketdb.model.Car;
@@ -23,9 +24,9 @@ public abstract class CommandEnterCar extends Command {
 	}
 
 	protected RequestCar enterRequestCar() throws SQLException, IllegalArgumentException, IllegalAccessException {
-		IBrandDao brandDao = new BrandDaoImpl();
-		IModelDao modelDao = new ModelDaoImpl();
-		IFuelTypeDao fuelTypeDao = new FuelTypeDaoImpl();
+		IBrandDao brandDao = BrandDaoImpl.INSTANCE;
+		IModelDao modelDao = ModelDaoImpl.INSTANCE;
+		IFuelTypeDao fuelTypeDao = FuelTypeDaoImpl.INSTANCE;
 		RequestCar abstractCar = new RequestCar();
 
 		boolean fieldCanBeNull = true;
@@ -57,9 +58,9 @@ public abstract class CommandEnterCar extends Command {
 	}
 
 	protected Car enterCar() throws SQLException, IllegalArgumentException, IllegalAccessException {
-		IBrandDao brandDao = new BrandDaoImpl();
-		IModelDao modelDao = new ModelDaoImpl();
-		IFuelTypeDao fuelTypeDao = new FuelTypeDaoImpl();
+		IBrandDao brandDao = BrandDaoImpl.INSTANCE;
+		IModelDao modelDao = ModelDaoImpl.INSTANCE;
+		IFuelTypeDao fuelTypeDao = FuelTypeDaoImpl.INSTANCE;
 		Car car = new Car();
 		boolean fieldCanBeNull = false;
 		Integer brandId = enterCorrectBrand(brandDao, fieldCanBeNull);

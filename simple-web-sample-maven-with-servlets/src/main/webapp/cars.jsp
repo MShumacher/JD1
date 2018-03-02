@@ -3,7 +3,7 @@
 <%@ page import="by.itacademy.jd1.web.model.Car"%>
 <%@ page import="java.util.List"%>
 
-<jsp:include page="menu.jsp" />
+<jsp:include page="index.html" />
 <h1>Cars page</h1>
 
 <%
@@ -16,8 +16,9 @@
 		<tr>
 			<td><c:out value="${car.id}" /></td>
 			<td><c:out value="${car.modelId}" /></td>
-			<td><c:out value="${car.fuelType}" /></td>
+			<td><c:out value="${car.fuelTypeId}" /></td>
 			<td><c:out value="${car.year}" /></td>
+			<td><c:out value="${car.price}" /></td>
 		</tr>
 	</c:forEach>
 </table>

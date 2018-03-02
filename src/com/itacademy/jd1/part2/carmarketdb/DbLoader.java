@@ -24,10 +24,10 @@ import com.itacademy.jd1.part2.carmarketdb.model.Model;
 public class DbLoader {
 
 	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, SQLException {
-		IBrandDao brandDao = new BrandDaoImpl();
-		IModelDao modelDao = new ModelDaoImpl();
-		ICarDao carDao = new CarDaoImpl();
-		IFuelTypeDao fuelTypeDao = new FuelTypeDaoImpl();
+		IBrandDao brandDao = BrandDaoImpl.INSTANCE;
+		IModelDao modelDao = ModelDaoImpl.INSTANCE;
+		ICarDao carDao = CarDaoImpl.INSTANCE;
+		IFuelTypeDao fuelTypeDao = FuelTypeDaoImpl.INSTANCE;
 
 		// fillBrandFromFile(brandDao);
 		// fillFuelTypeFromFile(fuelTypeDao);

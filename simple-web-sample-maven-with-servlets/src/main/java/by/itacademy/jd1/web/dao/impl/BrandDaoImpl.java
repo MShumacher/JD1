@@ -10,13 +10,36 @@ import by.itacademy.jd1.web.dao.IBrandDao;
 import by.itacademy.jd1.web.model.Brand;
 
 public class BrandDaoImpl extends AbstractDao<Brand> implements IBrandDao {
+	
 	public static final IBrandDao INSTANCE = new BrandDaoImpl();
 
 	private BrandDaoImpl() {
 		super();
 	}
+	
 	@Override
-	protected String getTableName() {
+	public Brand getByName(String name) throws SQLException {
+		Connection c = getConnection();
+
+		Statement statement = c.createStatement();
+		statement.executeQuery(String.format("select * from %s where name='%s'", getTableName(), name));
+
+		ResultSet resultSet = statement.getResultSet();
+		boolean hasNext = resultSet.next();
+		Brand result = null;
+		if (hasNext) {
+			result = handleRow(resultSet);
+		}
+
+		resultSet.close();
+		statement.close();
+		c.close();
+
+		return result;
+	}
+
+	@Override
+	public String getTableName() {
 		return "brand";
 	}
 
