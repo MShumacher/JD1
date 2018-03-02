@@ -7,6 +7,7 @@ public class RequestCar extends Car {
 	private Integer maxYear;
 	private Integer maxPrice;
 
+	
 	public Integer getBrandId() {
 		return brandId;
 	}
